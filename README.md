@@ -19,16 +19,16 @@ What things you need to install the software and how to install them
 Install the following packages and modules:
 
 1. Install Flask, PostgreSQL with its PL/Python extension, SQL Alchemy and participated
-'''Python
+```Python
 sudo apt-get -qqy update &&
 sudo apt-get -qqy upgrade &&
 sudo apt-get -qqy install postgresql python-psycopg2 postgresql-plpython &&
 sudo apt-get -qqy install python-flask python-sqlalchemy &&
 sudo apt-get -qqy install python-pip
-'''
+```
 
 1. Required pip packages
-'''Python
+``` Python
 sudo pip install bleach &&
 sudo pip install oauth2client &&
 sudo pip install requests &&
@@ -37,7 +37,7 @@ sudo pip install redis &&
 sudo pip install passlib &&
 sudo pip install itsdangerous &&
 sudo pip install flask-httpauth
-'''
+```
 2.
 
 
