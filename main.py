@@ -1,8 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for
+from sqlalchemy import create_engine
+from sqlalchemy.pool import StaticPool
+from sqlalchemy.orm import sessionmaker
+from database_setup import Regions, Base, ImpactEntry, User
 
 app = Flask(__name__)
 
 
+engine = create_engine('sqlite:///impactdatabase.db',connect_args={'check_same_thread':False},poolclass=StaticPool)
+Base.metadata.bind = engine
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+
+##################################################
 ########## USER CONTROLLER #######################
 ##################################################
 
@@ -10,64 +20,133 @@ app = Flask(__name__)
 def userLogin():
     return 'This page will show the login modal for users'
 
-@app.route('/profile')
-def userProfile():
-    return 'This page will show users profile page'
+@app.route('/profile/<int:user_id>')
+def showProfile(user_id):
+    user = session.query(User).filter_by(id=user_id).one()
+    return render_template('profile.html', user=user)
 
+##################################################
 ########## REGION CONTROLLER ######################
 ##################################################
 
 @app.route('/')
 @app.route('/regions')
 def showRegion():
-    return 'This page will show the full list of regions'
+    regions = session.query(Regions).all()
+    return render_template('regions.html', regions=regions)
 
-@app.route('/region/new')
+
+@app.route('/region/new/', methods=['GET', 'POST'])
 def newRegion():
-    return 'This page will be for adding a new region'
+    if request.method == 'POST':
+        newRegion = Regions(name=request.form['name'])
+        session.add(newRegion)
+        session.commit()
+        return redirect(url_for('showRegion'))
+    else:
+        return render_template('newRegion.html')
 
-@app.route('/region/<int:region_id>/edit')
-def editRegion():
-    return 'This page will be for editing an existing region'
 
-@app.route('/region/<int:region_id>/delete')
-def deleteRegion():
-    return 'This page will be for deleting an existing region'
 
-########## IMPACT ENTRY CONTROLLER ######################
+@app.route('/region/<int:region_id>/edit', methods=['GET', 'POST'])
+def editRegion(region_id):
+    editedRegion = session.query(Regions).filter_by(id=region_id).one()
+    if request.method == 'POST':
+        if request.form['name']:
+            editedRegion.name = request.form['name']
+            return redirect(url_for('showRegion'))
+    else:
+        return render_template('editRegion.html', region=editedRegion)
+
+
+@app.route('/region/<int:region_id>/delete', methods=['GET','POST'])
+def deleteRegion(region_id):
+    regionToDelete = session.query(Regions).filter_by(id=region_id).one()
+    if request.method == 'POST':
+        session.delete(regionToDelete)
+        session.commit()
+        return redirect(url_for('showRegion'))
+    else:
+        return render_template('deleteRegion.html', region=regionToDelete)
+
+##################################################
+########## IMPACT ENTRY CONTROLLER ################
 ##################################################
 
 @app.route('/region/<int:region_id>/')
 @app.route('/region/<int:region_id>/impact/')
-def showImpact():
-        return 'This page will be showing the impact activity of a single region'
+def showImpact(region_id):
+    region = session.query(Regions).filter_by(id=region_id).one()
+    impact_enteries = session.query(ImpactEntry).filter_by(region_id=region_id).all()
+    return render_template('impact.html', impact=impact_enteries, region=region)
+
 
 
 @app.route('/region/<int:region_id>/impact/new/', methods=['GET', 'POST'])
-def newImpactEntry():
-        return 'This page will be for creating a new impact entry for a given region'
+def newImpactEntry(region_id):
+    if request.method == 'POST':
+        newImpactEntry = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
+        funding_amount=request.form['funding_amount'],category=request.form['category'],
+        notes=request.form['notes'], picture=request.form['picture'], address=request.form['address'], region_id=region_id)
+        session.add(newImpactEntry)
+        session.commit()
+        return redirect(url_for('showImpact', region_id=region_id))
+    else:
+        return render_template('newImpactEntry.html', region_id=region_id)
 
 
 @app.route('/region/<int:region_id>/impact/<int:impact_id>/edit', methods=['GET', 'POST'])
-def editImpactEntry():
-        return 'This page will be for editing an impact entry of a given region'
+def editImpactEntry(region_id, impact_id):
+    ImpactEntryToEdit = session.query(ImpactEntry).filter_by(id=impact_id).one()
+    if request.method == 'POST':
+        if request.form['name']:
+            ImpactEntryToEdit.name = request.form['name']
+        if request.form['hours']:
+            ImpactEntryToEdit.description = request.form['hours']
+        if request.form['funding_amount']:
+            ImpactEntryToEdit.price = request.form['funding_amount']
+        if request.form['category']:
+            ImpactEntryToEdit.course = request.form['category']
+        if request.form['notes']:
+            ImpactEntryToEdit.description = request.form['notes']
+        if request.form['address']:
+            ImpactEntryToEdit.price = request.form['address']
+        if request.form['picture']:
+            ImpactEntryToEdit.course = request.form['picture']
+        session.add(ImpactEntryToEdit)
+        session.commit()
+        return redirect(url_for('showImpact', region_id=region_id))
+    else:
+        return render_template('editImpactEntry.html', ImpactEntrytoEdit=ImpactEntryToEdit, region_id=region_id, impact_id=impact_id)
+
+
 
 
 @app.route('/region/<int:region_id>/impact/<int:impact_id>/delete', methods=['GET', 'POST'])
-def deleteImpactEntry():
-        return 'This page will be for deleting an impact entry of a given region'
+def deleteImpactEntry(region_id, impact_id):
+        ImpactEntryToDelete = session.query(ImpactEntry).filter_by(id=impact_id).one()
+        if request.method == 'POST':
+            session.delete(ImpactEntryToDelete)
+            session.commit()
+            return redirect(url_for('showImpact', region_id=region_id))
+        else:
+            return render_template('deleteImpactEntry.html', Entry=ImpactEntryToDelete)
 
 
-########## DASHBOARD CONTROLLER ######################
+##################################################
+########## Dashboard Controller ##################
 ##################################################
 
 @app.route('/regions/dashboard')
+@app.route('/dashboard')
 def showDashboard():
         return 'This page will show the collated impact dashboard from all regions'
 
+
 @app.route('/region/<int:region_id>/dashboard')
-def showRegionDashboard():
-        return 'This page will show the impact dashboard for a given region'
+def showRegionDashboard(region_id):
+    region = session.query(Regions).filter_by(id=region_id).one()
+    return render_template('regionDashboard.html', region=region)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+
+
+<body>
+<div class = 'pane'>
+<h1>Regions</h1>
+
+<a href="{{url_for('newRegion')}}" > <h3> Create a New Region </h3> </a>
+
+{% for restaurant in restaurants %}
+
+
+<a href = "{{url_for('showImpact', region_id = region.id)}}"> <p>{{restaurant.name}}</p></a>
+
+<p><a href = "{{url_for('editRegion',region_id = region.id)}}">Edit Restaurant</a></p>
+
+<p> <a href = "{{url_for('deleteRegion',region_id = region.id)}}">Delete Restaurant</a> </p>
+
+
+
+{% endfor %}
+
+</div>
+</body>
+
+</html>

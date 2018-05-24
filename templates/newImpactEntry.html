@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>New Impact Entry</h1>
+
+<div class = 'pane'>
+<form action="{{ url_for('newImpactEntry', region_id=region_id )}}" method = 'post'>
+
+<dl>
+	<dt>Name:</dt>
+		<dd><input type ='text' size='30' name='name' required></dd>
+  <dt>Hours:</dt>
+	  <dd><input type ='text' size='30' name='hours' required></dd>
+  <dt>Funding Amount:</dt>
+    <dd><input type ='text' size='30' name='funding_amount' required></dd>
+	<dt>Notes:</dt>
+	  <dd><textarea name = 'notes' rows='5' cols='40' required></textarea></dd>
+	<dt>Picture:</dt>
+		<dd><input type = 'text' size = '8' name='picture' required></dd>
+	<dt>Address:</dt>
+		<dd><input type = 'text' size = '8' name='address' required></dd>
+  <dt>Category:</dt>
+	  <dd><input type ='radio' name='category' value='Homelessness' checked>Other</dd>
+    <dd><input type ='radio' name='category' value='Homelessness'>Homelessness</dd>
+    <dd><input type ='radio' name='category' value='Social Isolation'>Social Isolation</dd>
+    <dd><input type ='radio' name='category' value='Eduction'>Education</dd>
+    <dd><input type ='radio' name='category' value='Enviornment'>Enviornment</dd>
+</dl>
+
+
+<input type='submit' value='Create'>
+
+</form>
+</div>
+
+</body>

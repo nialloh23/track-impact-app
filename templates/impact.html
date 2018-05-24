@@ -1,0 +1,47 @@
+<html>
+
+<head>
+
+</head>
+	<body>
+		<div class = 'pane'>
+		<h1>{{ region.name }}</h1>
+
+		<a href = "{{url_for('newImpactEntry', region_id = region.id )}}">Create New Impact Entry</a>
+		<br> </br>
+		<a href = "{{url_for('showRegionDashboard', region_id = region.id )}}">See Region Impact Dashboard</a>
+
+
+	</br></br>
+
+	<div>
+	<h2>Impact Feed</h2>
+
+		{% for i in impact %}
+
+		<p>{{i.name}}</p>
+
+		<p>{{i.hours}}</p>
+
+		<p>{{i.funding_amount}}</p>
+
+		<p>{{i.category}}</p>
+
+		<p>{{i.notes}}</p>
+
+		<p>{{i.picture}}</p>
+
+		<p>{{i.address}}</p>
+
+
+		<a href='{{url_for('editImpactEntry', region_id = region.id, impact_id=i.id ) }}' >Edit</a>
+	</br>
+	<a href='{{url_for('deleteImpactEntry', region_id = region.id, impact_id=i.id ) }}' >Delete</a>
+	</br>
+	</br>
+		{% endfor %}
+	</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+
+<head>
+
+</head>
+
+
+<body>
+<div class = 'pane'>
+<h1>Regions</h1>
+
+<a href="{{url_for('newRegion')}}" > <h3> Create a New Region </h3> </a>
+
+{% for region in regions %}
+
+
+<a href = "{{url_for('showImpact', region_id = region.id)}}"> <p>{{region.name}}</p></a>
+
+<p><a href = "{{url_for('editRegion',region_id = region.id)}}">Edit REGION</a></p>
+
+<p> <a href = "{{url_for('deleteRegion',region_id = region.id)}}">Delete Region</a> </p>
+
+
+
+{% endfor %}
+
+</div>
+</body>
+
+</html>

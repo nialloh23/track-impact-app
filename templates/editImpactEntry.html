@@ -1,0 +1,59 @@
+<html>
+<head>
+	</head>
+	<body>
+
+<h1> Edit Impact Entry </h1>
+
+<form action="{{ url_for('editImpactEntry',region_id = region_id, impact_id=impact_id)}}" method = 'post'>
+
+<dl>
+	<dt>Name:</dt>
+		<dd><input type ='text' size='30' name='name' placeholder = '{{ImpactEntrytoEdit.name }}'></dd>
+	<dt>Hours:</dt>
+		<dd><input type ='text' size='30' name='hours' placeholder = '{{ImpactEntrytoEdit.hours }}'></dd>
+	<dt>Funding Amount:</dt>
+		<dd><input type ='text' size='30' name='funding_amount' placeholder = '{{ImpactEntrytoEdit.funding_amount }}'></dd>
+	<dt>Notes:</dt>
+		<dd><textarea name = 'notes' rows='5' cols='40' placeholder = '{{ImpactEntrytoEdit.notes }}'></textarea></dd>
+	<dt>Picture:</dt>
+		<dd><input type ='text' size='30' name='picture' placeholder = '{{ImpactEntrytoEdit.picture }}'></dd>
+	<dt>Address:</dt>
+		<dd><input type ='text' size='30' name='address' placeholder = '{{ImpactEntrytoEdit.address }}'></dd>
+
+	<dt>Category:</dt>
+
+	{% if ImpactEntrytoEdit.category == 'Social Isolation' %}
+		<dd><input type ='radio' name='category' value='Social Isolation'checked >Social Isolation</dd>
+	{%else%}
+	<dd><input type ='radio' name='category' value='Social Isolation' >Social Isolation</dd>
+    {% endif %}
+
+
+		{% if ImpactEntrytoEdit.category == 'Enviornment' %}
+			<dd><input type ='radio' name='category' value='Enviornment'checked >Enviornment</dd>
+		{%else%}
+		<dd><input type ='radio' name='category' value='Enviornment' >Enviornment</dd>
+	    {% endif %}
+
+
+			{% if ImpactEntrytoEdit.category == 'Education' %}
+				<dd><input type ='radio' name='category' value='Education'checked >Education</dd>
+			{%else%}
+			<dd><input type ='radio' name='category' value='Education' >Education</dd>
+		    {% endif %}
+
+				{% if ImpactEntrytoEdit.category == 'Homelessness' %}
+					<dd><input type ='radio' name='category' value='Homelessness'checked >Homelessness</dd>
+				{%else%}
+				<dd><input type ='radio' name='category' value='Homelessness' >Homelessness</dd>
+			    {% endif %}
+
+</dl>
+
+<input type='submit' value='Edit'>
+
+<a href = '{{url_for('showImpact', region_id = region_id)}}'> Cancel </a>
+</form>
+</body>
+</html>

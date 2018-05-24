@@ -1,0 +1,26 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+<h1> Edit Region </h1>
+
+
+<form action="{{ url_for('editRegion',region_id = region.id)}}" method = 'post'>
+
+
+	<p>Name:</p>
+		<input type ='text' size='30' name='name' placeholder = '{{region.name }}'>
+
+
+<input type='submit' value='Edit'>
+
+
+<a href = '{{url_for('showRegion')}}'> Cancel </a>
+
+</form>
+</body>
+
+</html>
