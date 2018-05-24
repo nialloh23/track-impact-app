@@ -29,6 +29,12 @@ def showProfile(user_id):
 ########## REGION CONTROLLER ######################
 ##################################################
 
+@app.route('/home')
+def showHome():
+    regions = session.query(Regions).all()
+    return render_template('index.html', regions=regions)
+
+
 @app.route('/')
 @app.route('/regions')
 def showRegion():
