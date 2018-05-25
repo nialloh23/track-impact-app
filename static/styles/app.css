@@ -1,0 +1,74 @@
+.header-logo img{
+  max-width: 150px;
+    }
+
+
+.profile-picture img {
+      width: 250px;
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      border: #333b3e 4px solid;
+  }
+
+  .post-picture img {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      border: #333b3e 0.75px solid;
+      float: left;
+    }
+
+.fa {
+      position: relative;
+      overflow: hidden;
+      float: left;
+}
+
+.hours_volunteered{
+      position: relative;
+      overflow: hidden;
+      float: left;
+}
+
+.hours{
+      position: relative;
+      overflow: hidden;
+      float: left;
+}
+
+.impact-table{
+      width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      padding: 2px;
+      float: left;
+      align: left;
+      border: 0;
+      text-align: left;
+      background-color: #ffffff;
+}
+
+tr {
+  padding: 1px;
+  height:10px;
+  margin: 1px;
+  vertical-align: bottom;
+  background-color: #ffffff;
+}
+
+th{
+  padding: 1px;
+  margin: 1px;
+  background-color: #ffffff;
+}

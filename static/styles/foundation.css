@@ -2495,13 +2495,13 @@ ul.no-bullet, ol.no-bullet {
   padding: 0.85em 1em;
   -webkit-appearance: none;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 5px;
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
   font-size: 0.9rem;
   line-height: 1;
   text-align: center;
   cursor: pointer;
-  background-color: #1779ba;
+  background-color: #37d892;
   color: #fefefe; }
   [data-whatinput='mouse'] .button {
     outline: 0; }
@@ -3325,7 +3325,7 @@ select {
   position: relative;
   margin: 0 0 1rem 0;
   padding: 1rem;
-  border: 1px solid rgba(10, 10, 10, 0.25);
+  border: 1px solid rgb(55, 216, 146);
   border-radius: 0;
   background-color: white;
   color: #0a0a0a; }
@@ -3334,7 +3334,7 @@ select {
   .callout > :last-child {
     margin-bottom: 0; }
   .callout.primary {
-    background-color: #d7ecfa;
+    background-color: #37d892;
     color: #0a0a0a; }
   .callout.secondary {
     background-color: #eaeaea;
@@ -5133,7 +5133,7 @@ a.thumbnail {
       flex-wrap: wrap; }
   .top-bar,
   .top-bar ul {
-    background-color: #e6e6e6; }
+    background-color: #ffffff; }
   .top-bar input {
     max-width: 200px;
     margin-right: 1rem; }

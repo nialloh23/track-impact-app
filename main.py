@@ -3,6 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
 from sqlalchemy.orm import sessionmaker
 from database_setup import Regions, Base, ImpactEntry, User
+from sqlalchemy import desc
 
 app = Flask(__name__)
 
@@ -23,7 +24,8 @@ def userLogin():
 @app.route('/profile/<int:user_id>')
 def showProfile(user_id):
     user = session.query(User).filter_by(id=user_id).one()
-    return render_template('profile.html', user=user)
+    impact_enteries = session.query(ImpactEntry).filter_by(user_id=user_id).order_by(desc(ImpactEntry.id)).all()
+    return render_template('profile.html', user=user, impact_enteries=impact_enteries)
 
 ##################################################
 ########## REGION CONTROLLER ######################
@@ -83,7 +85,7 @@ def deleteRegion(region_id):
 @app.route('/region/<int:region_id>/impact/')
 def showImpact(region_id):
     region = session.query(Regions).filter_by(id=region_id).one()
-    impact_enteries = session.query(ImpactEntry).filter_by(region_id=region_id).all()
+    impact_enteries = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).all()
     return render_template('impact.html', impact=impact_enteries, region=region)
 
 
@@ -92,8 +94,8 @@ def showImpact(region_id):
 def newImpactEntry(region_id):
     if request.method == 'POST':
         newImpactEntry = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
-        funding_amount=request.form['funding_amount'],category=request.form['category'],
-        notes=request.form['notes'], picture=request.form['picture'], address=request.form['address'], region_id=region_id)
+        funding_amount=request.form['funding_amount'],category=request.form['category'], organisation=request.form['category'],
+        notes=request.form['notes'], picture=request.form['picture'], address=request.form['address'], region_id=region_id, user_id=request.form['user_id'])
         session.add(newImpactEntry)
         session.commit()
         return redirect(url_for('showImpact', region_id=region_id))
@@ -111,21 +113,19 @@ def editImpactEntry(region_id, impact_id):
             ImpactEntryToEdit.description = request.form['hours']
         if request.form['funding_amount']:
             ImpactEntryToEdit.price = request.form['funding_amount']
-        if request.form['category']:
-            ImpactEntryToEdit.course = request.form['category']
         if request.form['notes']:
             ImpactEntryToEdit.description = request.form['notes']
         if request.form['address']:
             ImpactEntryToEdit.price = request.form['address']
         if request.form['picture']:
             ImpactEntryToEdit.course = request.form['picture']
+        if request.form['category']:
+            ImpactEntryToEdit.course = request.form['category']
         session.add(ImpactEntryToEdit)
         session.commit()
         return redirect(url_for('showImpact', region_id=region_id))
     else:
         return render_template('editImpactEntry.html', ImpactEntrytoEdit=ImpactEntryToEdit, region_id=region_id, impact_id=impact_id)
-
-
 
 
 @app.route('/region/<int:region_id>/impact/<int:impact_id>/delete', methods=['GET', 'POST'])

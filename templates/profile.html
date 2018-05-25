@@ -1,23 +1,100 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles/foundation.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<head>
+  </head>
+  <body>
+    <!-- Start Top Bar -->
 
-</head>
-	<body>
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li class="header-logo">
+              <a href="http://localhost:5000/regions"><img src="https://d2ltgdq21v5def.cloudfront.net/assets/logo-dark-no-tagline-30cfc772aa26c3d8c6bfdb9fc155e6728fda70ec3f9177e7654cae48d842e2f1.png"/></a>
+            </li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><a href="#">Sign-up</a></li>
+            <li><a href="#" class="button">Login</a></li>
+          </ul>
+        </div>
+      </div>
+  <!-- End Top Bar -->
 
-		<div class = 'pane'>
-		<h1>{{user.name }}</h1>
+      <div class="callout large primary">
+      <div class="profile-picture">
+        <img src="{{user.picture}}" alt="Niall O'Hara">
+      </div>
+      <div class="text-center">
+        <h3 id=profile_name>{{user.name}}</h3>
+        <span> <h5 id=location>{{user.job_title}}, {{user.location }}</h5> </span>
+        <span > <h5 id=email>{{user.email}}</h5> </span>
+        <span> <a href="{{user.linkedin_profile}}"> <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png" alt="{{user.name }}" width="30" height="30"></a></span>
+        <span> <a href="{{user.twitter_profile}}"> <img src="https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png" alt="{{user.name }}" width="50" height="50"></a></span>
+        <span> <a href="{{user.facebook_profile}}"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="{{user.name }}" width="30" height="30"></a></span>
 
-		<p>{{user.name}}</p>
+      </div>
+      </div>
 
-		<p>{{user.email}}</p>
 
-		<p>{{user.location}}</p>
+      {% for impact in impact_enteries %}
 
-		<p>{{user.picture}}</p>
+      <article class="grid-container">
+      <div class="grid-x align-center">
+        <div class="cell medium-8">
 
-	</div>
+          <div class="blog-post">
+            <span class="post-picture">
+              <img src="{{user.picture}}" alt="{{user.name}}">
+            </span>
+            <span><h3 id=impact_description>{{impact.name}} <small>3/6/2016</small></h3></span>
 
-	</body>
+            <table class="impact-table">
+              <tr>
+                <td><i class="fa fa-clock-o"></i></td>
+                <td><strong>Hours Volunteered:</strong></td>
+                <td>{{impact.hours}}</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-euro"></i></td>
+                <td><strong>Funding Raised:</strong></td>
+                <td>{{impact.funding_amount}}</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-building"></i></td>
+                <td><strong>Organisation:</strong></td>
+                <td>{{impact.organisation}}</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-cloud"></i></td>
+                <td><strong>Theme:</strong></td>
+                <td>{{impact.category}}</td>
+              </tr>
+            </table>
 
+            <img class="thumbnail" src="{{impact.picture}}">
+            <p>{{impact.notes}}</p>
+            <div class="callout">
+              <ul class="menu simple">
+                <li><a href="#">Author: {{user.name}}</a></li>
+                <li><a href="#">Comments: 3</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+
+      </article>
+  </body>
 </html>

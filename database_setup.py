@@ -14,8 +14,12 @@ class User(Base):
     name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
     location = Column(String(250))
-    picture = Column(String(250))
-
+    picture = Column(String(80))
+    phone_number = Column(String(80))
+    job_title = Column(String(80))
+    facebook_profile = Column(String(80))
+    twitter_profile = Column(String(80))
+    linkedin_profile = Column(String(80))
 
 class Regions(Base):
     __tablename__ = 'regions'
@@ -35,8 +39,10 @@ class ImpactEntry(Base):
     hours = Column(String(8))
     funding_amount = Column(String(8))
     category = Column(String(80))
+    organisation = Column(String(80))
+    created_at = Column(String(80))
     notes = Column(String(250))
-    picture = Column(String(80))
+    picture = Column(String(250))
     address= Column(String(80))
     region_id = Column(Integer, ForeignKey('regions.id'))
     region = relationship(Regions)
