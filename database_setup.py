@@ -30,6 +30,15 @@ class Regions(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'location' : self.location,
+            'user_id' : self.user_id
+            }
 
 class ImpactEntry(Base):
     __tablename__ = 'impact_entry'
@@ -48,6 +57,24 @@ class ImpactEntry(Base):
     region = relationship(Regions)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'hours' : self.hours,
+            'funding_amount' : self.funding_amount,
+            'category' : self.category,
+            'organisation' : self.organisation,
+            'created_at' : self.created_at,
+            'notes' : self.notes,
+            'picture' : self.picture,
+            'address' : self.address,
+            'region_id' : self.region_id,
+            'user_id' : self.user_id
+            }
 
 
 engine = create_engine('sqlite:///impactdatabase.db')

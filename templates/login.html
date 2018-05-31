@@ -1,30 +1,90 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/styles/foundation.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/styles/app.css">
+    <link  type="text/javascript" href="../../../static/js/app.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<head>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
-	</head>
-
-
-<body>
-<div class = 'pane'>
-<h1>Regions</h1>
-
-<a href="{{url_for('newRegion')}}" > <h3> Create a New Region </h3> </a>
-
-{% for restaurant in restaurants %}
-
-
-<a href = "{{url_for('showImpact', region_id = region.id)}}"> <p>{{restaurant.name}}</p></a>
-
-<p><a href = "{{url_for('editRegion',region_id = region.id)}}">Edit Restaurant</a></p>
-
-<p> <a href = "{{url_for('deleteRegion',region_id = region.id)}}">Delete Restaurant</a> </p>
+    <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+     <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+    <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
 
 
+  </head>
 
-{% endfor %}
+  <body id=form-registration>
+    <div class="form-registration">
 
+    <figure class="form-registration-img">
+      <img src="http://streetfeast.ie/wp-content/uploads/2017/04/LibertiesFeast1_AoifeGiles.jpg" alt="" />
+      <figcaption class="form-registration-img-caption"><strong>Log in using the account you signed up with.</strong></figcaption>
+    </figure>
+
+    <form class="form-registration-group" action="">
+      <input class="form-registration-input"  type="email" placeholder="Your email">
+      <input class="form-registration-input"  type="password" placeholder="Your Password">
+      <input class="form-registration-submit-button" type="submit" value="Continue">
+      <p class="or-divider"><span>or</span></p>
+      <a class="form-registration-social-button" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> Continue With Facebook</a>
+      <a class="form-registration-social-button" href="#signinButton">
+        <span class="g-signin"
+          data-scope="openid email"
+          data-clientid="320522135262-1gt65hdt4j5qgfcfpc98b1pe012nnm7p.apps.googleusercontent.com"
+          data-redirecturi="postmessage"
+          data-accesstype="offline"
+          data-cookiepolicy="single_host_origin"
+          data-callback="signInCallback"
+          data-approvalprompt="force">
+        <i class="fa fa-google" aria-hidden="true"></i> Continue With Google</a>
+      <p class="form-registration-member-signin">Don't have an account? <a href="#">Sign up here</a></p>
+      <p class="form-registration-terms"><a href="#">Terms &amp; Conditions</a>|<a href="#">Privacy</a></p>
+    </form>
 </div>
-</body>
+  <div>
+    <img id=login-logo src="https://d2ltgdq21v5def.cloudfront.net/assets/logo-dark-no-tagline-30cfc772aa26c3d8c6bfdb9fc155e6728fda70ec3f9177e7654cae48d842e2f1.png"></img>
+  </div>
 
-</html>
+
+    <div id="result"></div>
+
+
+    <script>
+    function signInCallback(authResult) {
+      if (authResult['code']) {
+        // Hide the sign-in button now that the user is authorized
+        $('#signinButton').attr('style', 'display: none');
+        // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state={{STATE}}',
+          processData: false,
+          data: authResult['code'],
+          contentType: 'application/octet-stream; charset=utf-8',
+          success: function(result) {
+            // Handle or verify the server response if necessary.
+            if (result) {
+              $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+             setTimeout(function() {
+              window.location.href = "/regions";
+            }, 500);
+
+          } else if (authResult['error']) {
+        console.log('There was an error: ' + authResult['error']);
+      } else {
+            $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+             }
+          }
+
+      }); } }
+    </script>
+
+
+
+	</body>
+	</html>

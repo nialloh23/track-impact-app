@@ -1,30 +1,89 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
+    <link rel="stylesheet" type="text/css" href="../static/styles/foundation.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/app.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/app.css">
+    <script type="text/javascript" src="../static/js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/fonts/Grandstander-clean.otf">
+  	<link href="https://fonts.googleapis.com/css?family=Raleway:200,400,500" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
-</head>
-
-
-<body>
-<div class = 'pane'>
-<h1>Regions</h1>
-
-<a href="{{url_for('newRegion')}}" > <h3> Create a New Region </h3> </a>
-
-{% for region in regions %}
-
-
-<a href = "{{url_for('showImpact', region_id = region.id)}}"> <p>{{region.name}}</p></a>
-
-<p><a href = "{{url_for('editRegion',region_id = region.id)}}">Edit REGION</a></p>
-
-<p> <a href = "{{url_for('deleteRegion',region_id = region.id)}}">Delete Region</a> </p>
+    <body class=homepage_body>
 
 
 
-{% endfor %}
+      <!-- Start Top Bar -->
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li class="header-logo">
+              <a href="http://localhost:5000/regions"><img src="https://d2ltgdq21v5def.cloudfront.net/assets/logo-dark-no-tagline-30cfc772aa26c3d8c6bfdb9fc155e6728fda70ec3f9177e7654cae48d842e2f1.png"/></a>
+            </li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            {% if login_session['access_token'] != null %}
+            <li class="header-profile">
+              <a href="{{url_for('showProfile',user_id = login_session['user_id'])}}"><img src="{{login_session['picture']}}"/></a>
+            </li>
+            <li><a href="http://localhost:5000/gdisconnect">Log Out</a></li>
+            {% else %}
+            <li><a href="http://localhost:5000/login" class="button"><strong>Login</strong></a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    <!-- End Top Bar -->
+        <div class="hero">
+            <video autoplay muted loop id="myVideo"> <source src="../static/img/changex_video.mp4" type="video/mp4"> </video>
 
-</div>
-</body>
+            <div class="hero-inner">
+                <img src="../static/img/AIB Logo.png" alt="AIB Logo" id="aib_logo">
+                <img src="../static/img/ChangeX Logo.png" alt="ChangeX Logo" id="changex_logo">
+                <h2 id="hero-text"><strong>Together Supporting Communities</strong></h2>
+                <h5><span class=number_counter><strong>6,700</strong></span> <span><strong> Volunteer Hours Logged by AIB Staff this Year</strong><span></h5>
+                <a href="#project-label" class="btn">Log My Impact</a>
+            </div>
+        </div>
 
+        <div class=region_body>
+
+          <h2 id="project-label">
+            Regions:
+          </h2>
+          <a href="{{url_for('newRegion')}}" > <h3 id=create_region> Create a New Region </h3> </a>
+
+          <div class="container">
+
+          	<!-- project listing -->
+            {% for region in regions %}
+          	<div class="project">
+          		<a href="{{url_for('showImpact', region_id = region.id)}}"> <span id="empty_span"></span> </a>
+          		<div class="project_image">
+          			<img alt="Project Image" src="../static/img/AIB Image.png">
+          		</div>
+          		<div class="project_text">
+          			<div class="project_title">
+          				<h3> {{region.name}} </h3>
+          			</div>
+          			<div class="project_description">
+                  <p> Check out the impact the {{region.name}} is having in their community </p>
+          			</div>
+          		</div>
+          	</div>
+            {% endfor %}
+          </div>
+
+        </div>
+
+    </body>
 </html>

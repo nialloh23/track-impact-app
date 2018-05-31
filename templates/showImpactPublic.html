@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+		<link rel="stylesheet" type="text/css" href="../../../static/styles/foundation.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/styles/app.css">
+    <link  type="text/javascript" href="../../../static/js/app.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="header-logo">
+            <a href="http://localhost:5000/regions"><img src="https://d2ltgdq21v5def.cloudfront.net/assets/logo-dark-no-tagline-30cfc772aa26c3d8c6bfdb9fc155e6728fda70ec3f9177e7654cae48d842e2f1.png"/></a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          {% if login_session['access_token'] != null %}
+          <li class="header-profile">
+            <a href="{{url_for('showProfile',user_id = login_session['user_id'])}}"><img src="{{login_session['picture']}}"/></a>
+          </li>
+          <li><a href="http://localhost:5000/gdisconnect">Log Out</a></li>
+          {% else %}
+          <li><a href="http://localhost:5000/login" class="button"><strong>Login</strong></a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  <!-- End Top Bar -->
+
+      <div class="callout large primary">
+      <div class="profile-picture">
+        <img src="https://i.ebayimg.com/images/g/BegAAMXQydtTOYQO/s-l300.jpg" alt="{{region.name}}">
+      </div>
+      <div class="text-center">
+        <h3 id=profile_name>{{region.name}}</h3>
+        <a href = "{{url_for('showRegionDashboard', region_id = region.id )}}">(Visit Impact Dashboard)</a>
+      </div>
+      </div>
+
+
+
+
+      <article class="grid-container">
+      <div class="grid-x align-center">
+        <div class="cell medium-8">
+          <h3 >{{region.name}} Impact Feed</h3>
+
+          <form class="callout text-center">
+
+					{% for i in impact %}
+          <div class="blog-post">
+            {% if i.user_id == True %}
+            <span class="post-picture">
+            <a href="{{url_for('showProfile',user_id = i.user_id)}}">  <img src="{{i.user.picture}}" alt="{{i.user.name}}"></a>
+            </span><span><h3 id=impact_description>{{i.name}} <small>3/6/2016</small></h3></span>
+            {% else %}
+            <span class="post-picture">
+            <a href="#">  <img src="{{i.user.picture}}" alt="{{i.user.name}}"> </a>
+            </span><span><h3 id=impact_description>{{i.name}} <small>3/6/2016</small></h3></span>
+            {% endif %}
+
+
+            <table class="impact-table">
+              <tr>
+                <td><i class="fa fa-clock-o"></i></td>
+                <td><strong>Hours Volunteered:</strong></td>
+                <td>{{i.hours}}</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-euro"></i></td>
+                <td><strong>Funding Raised:</strong></td>
+                <td>{{i.funding_amount}}</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-building"></i></td>
+                <td><strong>Organisation:</strong></td>
+                <td>{{i.organisation}}</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-cloud"></i></td>
+                <td><strong>Theme:</strong></td>
+                <td>{{i.category}}</td>
+              </tr>
+            </table>
+
+            <img class="thumbnail" src="{{i.picture}}">
+            <p>{{i.notes}}</p>
+            <div class="callout">
+              <ul class="menu simple">
+                {% if i.user_id == True %}
+                <li><a href="{{url_for('showProfile',user_id = i.user_id)}}">Author: {{i.user.name}}</a></li>
+                {% else %}
+                <li><a href="#">Author: {{i.user.name}}</a></li>
+                {% endif %}
+                <li><a href="#">Comments: 3</a></li>
+              </ul>
+            </div>
+          </div>
+
+        {% endfor %}
+
+
+      </article>
+  </body>
+</html>
