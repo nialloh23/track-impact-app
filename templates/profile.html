@@ -11,7 +11,7 @@
 
   </head>
   <body>
-    
+
     <!-- Start Top Bar -->
     <div class="top-bar">
       <div class="top-bar-left">
@@ -37,17 +37,42 @@
   <!-- End Top Bar -->
 
       <div class="callout large primary">
+      <div class="text-center">
+        {% for hours in total_hours[:1] %}
+        <button name ="submit" value="1" type="submit" class="button" id="stat_card"><i class="fa fa-clock-o"></i>  {{hours}} Volunteer Hours </button>
+        {% endfor %}
+        <button name ="submit" value="1" type="submit" class="button" id="stat_card"><i class="fa fa-euro"></i>  {{total_funding[0]}} Fundraised </button>
+        <button name ="submit" value="1" type="submit" class="button" id="stat_card"><i class="fa fa-cloud"></i>  4 Followers </button>
+      </div>
       <div class="profile-picture">
-        <img src="{{user.picture}}" alt="Niall O'Hara">
+        <img src="{{user_profile.picture}}" alt="Niall O'Hara">
       </div>
       <div class="text-center">
-        <h3 id=profile_name>{{user.name}}</h3>
-        <span> <h5 id=location>{{user.job_title}}, {{user.location }}</h5> </span>
-        <span > <h5 id=email>{{user.email}}</h5> </span>
-        <span> <a href="{{user.linkedin_profile}}"> <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png" alt="{{user.name }}" width="30" height="30"></a></span>
-        <span> <a href="{{user.twitter_profile}}"> <img src="https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png" alt="{{user.name }}" width="50" height="50"></a></span>
-        <span> <a href="{{user.facebook_profile}}"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="{{user.name }}" width="30" height="30"></a></span>
 
+
+        <h3 id=profile_name>{{user_profile.name}}</h3>
+
+        {% if session_friendship.follower != null %}
+        <form><button name ="submit" value="1" type="submit" class="button">Followed</button></form>
+
+        {% else %}
+        <form action="{{ url_for('showProfile', user_id=user_profile.id )}}" method="post">
+            <input type='hidden' name="follower" value="{{login_session['user_id']}}">
+            <input type='hidden' name="followed" value="{{user_profile.id}}">
+            <button name ="submit" value="1" type="submit" class="button">Follow</button>
+        </form>
+        {% endif %}
+
+
+        {% for friend in friendships[:4] %}
+          <span class="friend-picture"> <a href="{{url_for('showProfile',user_id = friend.follower)}}">  <img src="{{friend.user.picture}}"></a></span>
+        {% endfor %}
+
+          <span> <h5 id=location>{{user_profile.job_title}}, {{user_profile.location }}</h5> </span>
+          <span > <h5 id=email>{{user_profile.email}}</h5> </span>
+          <span> <a href="{{user_profile.linkedin_profile}}"> <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png" alt="{{user_profile.name }}" width="30" height="30"></a></span>
+          <span> <a href="{{user_profile.twitter_profile}}"> <img src="https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png" alt="{{user_profile.name }}" width="50" height="50"></a></span>
+          <span> <a href="{{user_profile.facebook_profile}}"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" alt="{{user_profile.name }}" width="30" height="30"></a></span>
       </div>
       </div>
 
@@ -60,7 +85,7 @@
 
           <div class="blog-post">
             <span class="post-picture">
-              <img src="{{user.picture}}" alt="{{user.name}}">
+              <img src="{{user_profile.picture}}" alt="{{user_profile.name}}">
             </span>
             <span><h3 id=impact_description>{{impact.name}} <small>3/6/2016</small></h3></span>
 
@@ -91,14 +116,14 @@
             <p>{{impact.notes}}</p>
             <div class="callout">
               <ul class="menu simple">
-                <li><a href="#">Author: {{user.name}}</a></li>
+                <li><a href="#">Author: {{user_profile.name}}</a></li>
                 <li><a href="#">Comments: 3</a></li>
               </ul>
             </div>
           </div>
         </div>
 
-        {% endfor %}
+      {% endfor %}
 
 
       </article>

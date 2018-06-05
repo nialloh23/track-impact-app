@@ -1,0 +1,566 @@
+.header-logo img{
+  max-width: 150px;
+    }
+
+
+.profile-picture img {
+      width: 250px;
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      border: #333b3e 4px solid;
+  }
+
+  .post-picture img {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      border: #333b3e 0.75px solid;
+      float: left;
+    }
+
+  .friend-picture img {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      align-self: center;
+      border-radius: 50%;
+      border: #333b3e 0.75px solid;
+      float:inherit;
+    }
+
+
+
+
+
+
+
+.fa {
+      position: relative;
+      overflow: hidden;
+      float: left;
+}
+
+.hours_volunteered{
+      position: relative;
+      overflow: hidden;
+      float: left;
+}
+
+.hours{
+      position: relative;
+      overflow: hidden;
+      float: left;
+}
+
+.impact-table{
+      width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      padding: 2px;
+      float: left;
+      align: left;
+      border: 0;
+      text-align: left;
+      background-color: #ffffff;
+}
+
+tr {
+  padding: 1px;
+  height:10px;
+  margin: 1px;
+  vertical-align: bottom;
+  background-color: #ffffff;
+}
+
+th{
+  padding: 1px;
+  margin: 1px;
+  background-color: #ffffff;
+}
+
+#form-registration{
+  background-color: #EFEEED;
+}
+
+
+.form-registration {
+  background: #fefefe;
+  width: 27.5%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.form-registration .form-registration-img {
+  position: relative;
+}
+
+.form-registration .form-registration-img .form-registration-img-caption {
+  position: absolute;
+  padding: 0.5rem;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(1, rgba(254, 254, 254, 0.3)), color-stop(0, #fefefe));
+}
+
+
+.form-registration-group {
+  padding: 1rem;
+}
+
+.form-registration-group .form-registration-input {
+  border-radius: 0;
+}
+
+.form-registration-group .form-registration-input:focus {
+  border: 2px solid #1779ba;
+  box-shadow: 0 0 5px #1779ba;
+}
+
+.form-registration-group .form-registration-submit-button {
+  text-transform: uppercase;
+  margin-bottom: 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #37d892;
+  color: #fefefe;
+  display: block;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 5000px;
+}
+
+[data-whatinput='mouse'] .form-registration-group .form-registration-submit-button {
+  outline: 0;
+}
+
+.form-registration-group .form-registration-submit-button:hover, .form-registration-group .form-registration-submit-button:focus {
+  background-color: #126195;
+  color: #fefefe;
+}
+
+.form-registration-group .form-registration-social-button {
+  text-transform: uppercase;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #3b5998;
+  color: #3b5998;
+  display: block;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 5000px;
+}
+
+[data-whatinput='mouse'] .form-registration-group .form-registration-social-button {
+  outline: 0;
+}
+
+.form-registration-group .
+, .form-registration-group .form-registration-social-button:hover, .form-registration-group .form-registration-social-button:focus {
+  background-color: transparent;
+}
+
+.form-registration-group .form-registration-social-button:hover, .form-registration-group .form-registration-social-button:focus {
+  border-color: #1e2d4c;
+  color: #1e2d4c;
+}
+
+.form-registration-group .form-registration-social-button .fa {
+  vertical-align: text-top;
+  margin-right: 0.5rem;
+}
+
+.form-registration-group .form-registration-member-signin {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form-registration-group .form-registration-member-signin a {
+  margin-left: 0.25rem;
+}
+
+.form-registration-group .form-registration-terms {
+  text-align: center;
+  font-size: 12px;
+}
+
+.form-registration-group .form-registration-terms a:first-child {
+  margin-right: 0.25rem;
+}
+
+.form-registration-group .form-registration-terms a:last-child {
+  margin-left: 0.25rem;
+}
+
+.form-registration-group .or-divider {
+  position: relative;
+  margin: 1.5rem 0px;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+  height: 0px;
+  border: 1px solid #e6e6e6;
+}
+
+.form-registration-group .or-divider span {
+  color: #8a8a8a;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  top: -12px;
+  background-color: #fefefe;
+  padding: 0 8px;
+}
+
+
+
+.fa-google{
+  color: #dd4b39;
+}
+
+#login-logo{
+  width: 10%;
+  position: absolute;
+  left: 50%;
+  bottom: 1%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.region_body {
+	display: block;
+	flex-direction: column;
+	max-width: 1050px;
+	min-width: 200px;
+	margin-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 32px;
+	background-color: #efeeed;
+	font-family: "Raleway";
+  clear: both;
+  padding-top: 300px;
+}
+
+.homepage_body {
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 32px;
+	background-color: #efeeed;
+}
+
+
+
+
+
+
+.hero {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    width: 100%;
+    height: 55%;
+    overflow: hidden;
+    clear: both;
+    /* Sizing */
+
+    /* Flexbox stuff */
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    /* Text styles */
+    text-align: center;
+
+    /* Background styles */
+  /*  background-image: url(https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg); */
+/*    background-size: cover; */
+  /*  background-position: center center; */
+/*    background-repeat: no-repeat;*/
+  /*  background-attachment: fixed;*/
+}
+
+
+.hero video {
+  /* Make video to at least 100% wide and tall */
+  min-width: 100%;
+  min-height: 100%;
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  clear: both;
+  display: block;
+
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center; */
+}
+
+
+.hero-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 95%;
+  max-width: 45em;
+  margin: auto auto 1em;
+  box-sizing: border-box;
+  padding: 2em;
+  line-height: 1.5;
+  text-align: center;
+ }
+
+
+.hero h2 {
+    /* Text styles */
+    color: #ffffff
+}
+
+.hero h5 {
+    /* Text styles */
+    color: #ffffff
+}
+
+.hero .btn {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Border styles */
+    border: 2px solid #58B74E;
+    background-color: #58B74E;
+
+}
+
+
+
+.hero .btn {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Padding and margins */
+    padding: 1em;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #58B74E;
+
+    /* Text styles */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+
+    /* Border styles */
+    border: 3px solid #58B74E;
+    border-radius: 30px;
+  }
+
+
+
+
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+}
+
+.project {
+	position: relative;
+	margin-top: 32px;
+	width: 31%;
+	transition: box-shadow .3s;
+	min-width: 250px;
+	background-color:#ffffff;
+	z-index: 2;
+	border-radius: 7.5px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+#empty_span {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+
+  z-index: 1;
+
+  /* fixes overlap error in IE7/8,
+     make sure you have an empty gif */
+  background-image: url('empty.gif');
+}
+
+
+a.divlink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    /* Makes sure the link doesn't get underlined */
+    z-index: 10;
+    /* raises anchor tag above everything else in div */
+    background-color: white;
+    /*workaround to make clickable in IE */
+    opacity: 0;
+    /*workaround to make clickable in IE */
+    filter: alpha(opacity=0);
+    /*workaround to make clickable in IE */
+}
+
+.project:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+	cursor: hand;
+	cursor: pointer;
+	opacity: .9;
+}
+
+#project_link {
+	style="display:block;
+	width:100%;
+	height:100%;
+	z-index:10;
+}
+
+.project_text {
+	padding: 1em 1em 1em 1em;
+	color: #5e5e5e;
+}
+
+.project_image img{
+	width: 100%;
+	border-radius:7.5px;
+}
+
+.project_title {
+	font-weight: bold;
+	font-size: 1.25em;
+	font-family: 'Amatic SC', cursive;
+	color: #58B54E;
+}
+
+.project_description {
+	margin-top: 0.2em;
+}
+
+
+
+footer {
+	margin-top: 48px;
+	color: #2d3c49;
+}
+
+
+.header-profile img {
+      height: 33px;
+      width: 33px;
+      border-radius: 50%;
+      border: #333b3e 1px solid;
+  }
+
+
+  @font-face{
+  font-family: trial;
+  src: {{ url_for('static', filename='Grandstander-clean.otf') }};
+  font-weight: bold;
+  }
+
+
+  #hero-text {
+    font-family: 'Permanent Marker', cursive;
+    color: #ffffff;
+    line-height: 1.2;
+    font-size: 50px}
+
+  #create_region{
+    font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
+    color: #E01273;
+    text-decoration: underline;
+    font-size: 16px}
+
+
+  h2#project-label {
+  	margin: 48px 0 0 0;
+  	font-size: 3rem;
+  	font-weight: bold;
+    font-family: 'Permanent Marker', cursive;
+    color: #58B74E;
+  	font-weight: 100;
+  	background-color: #efeeed;
+  }
+
+
+#aib_logo{
+  max-width: 35px;
+  max-height: 35px;
+}
+
+#changex_logo{
+  max-width: 35px;
+  max-height: 35px;
+}
+
+#followed{
+  background-color: #E01273;
+}
+
+#stat_card{
+    background-color: #E01273;
+    border-radius: 5px;
+    width: 200px;
+}

@@ -3,6 +3,8 @@ from sqlalchemy import Column, ForeignKey, Integer, String, DateTime, Numeric
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+from datetime import datetime
+
 
 Base = declarative_base()
 
@@ -75,6 +77,15 @@ class ImpactEntry(Base):
             'region_id' : self.region_id,
             'user_id' : self.user_id
             }
+
+class Friendships(Base):
+    __tablename__ = 'friendships'
+
+    id = Column(Integer, primary_key=True)
+    follower = Column(Integer,ForeignKey('user.id'))
+    followed = Column(Integer)
+    user = relationship(User)
+
 
 
 engine = create_engine('sqlite:///impactdatabase.db')

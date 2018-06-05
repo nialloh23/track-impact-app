@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://localhost:5000/profile/1 -->
+<html class="no-js" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation for Sites</title>
+    <link rel="stylesheet" type="text/css" href="./Foundation for Sites_files/foundation.css">
+    <link rel="stylesheet" type="text/css" href="./Foundation for Sites_files/app.css">
+    <link rel="stylesheet" href="./Foundation for Sites_files/font-awesome.min.css">
+
+  </head>
+  <body>
+
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="header-logo">
+            <a href="http://localhost:5000/regions"><img src="./Foundation for Sites_files/logo-dark-no-tagline-30cfc772aa26c3d8c6bfdb9fc155e6728fda70ec3f9177e7654cae.png"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          
+          <li class="header-profile">
+            <a href="http://localhost:5000/profile/3"><img src="./Foundation for Sites_files/photo.jpg"></a>
+          </li>
+          <li><a href="http://localhost:5000/gdisconnect">Log Out</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  <!-- End Top Bar -->
+
+      <div class="callout large primary">
+      <div class="text-center">
+        <button name="submit" value="1" type="submit" class="button" id="stat_card"><i class="fa fa-clock-o"></i>  SELECT sum(impact_entry.hours) AS sum_1 
+FROM impact_entry 
+WHERE impact_entry.user_id = ? Volunteer Hours </button>
+        <button name="submit" value="1" type="submit" class="button" id="stat_card"><i class="fa fa-euro"></i>  SELECT sum(impact_entry.funding_amount) AS sum_1 
+FROM impact_entry 
+WHERE impact_entry.user_id = ? Fundraised </button>
+        <button name="submit" value="1" type="submit" class="button" id="stat_card"><i class="fa fa-cloud"></i>  4 Followers </button>
+      </div>
+      <div class="profile-picture">
+        <img src="./Foundation for Sites_files/C2ZP352K_400x400.png" alt="Niall O&#39;Hara">
+      </div>
+      <div class="text-center">
+
+
+        <h3 id="profile_name">Niall O'Hara</h3>
+
+        
+        <form action="http://localhost:5000/profile/1" method="post">
+            <input type="hidden" name="follower" value="3">
+            <input type="hidden" name="followed" value="1">
+            <button name="submit" value="1" type="submit" class="button">Follow</button>
+        </form>
+        
+
+
+        
+          <span class="friend-picture"> <a href="http://localhost:5000/profile/1">  <img src="./Foundation for Sites_files/C2ZP352K_400x400.png"></a></span>
+        
+          <span class="friend-picture"> <a href="http://localhost:5000/profile/3">  <img src="./Foundation for Sites_files/photo.jpg"></a></span>
+        
+          <span class="friend-picture"> <a href="http://localhost:5000/profile/3">  <img src="./Foundation for Sites_files/photo.jpg"></a></span>
+        
+
+          <span> <h5 id="location">Product Manager, Castlebar,Mayo</h5> </span>
+          <span> <h5 id="email">niall@changex.org</h5> </span>
+          <span> <a href="https://www.linkedin.com/in/niallohara1/"> <img src="./Foundation for Sites_files/square-linkedin-512.png" alt="Niall O&#39;Hara" width="30" height="30"></a></span>
+          <span> <a href="https://twitter.com/nialloh23"> <img src="./Foundation for Sites_files/twitter.png" alt="Niall O&#39;Hara" width="50" height="50"></a></span>
+          <span> <a href="https://www.facebook.com/nialloh23"> <img src="./Foundation for Sites_files/2000px-F_icon.svg.png" alt="Niall O&#39;Hara" width="30" height="30"></a></span>
+      </div>
+      </div>
+
+
+      
+
+      <article class="grid-container">
+      <div class="grid-x align-center">
+        <div class="cell medium-8">
+
+          <div class="blog-post">
+            <span class="post-picture">
+              <img src="./Foundation for Sites_files/C2ZP352K_400x400.png" alt="Niall O&#39;Hara">
+            </span>
+            <span><h3 id="impact_description">Making Sure Everyone has a Hot Meal this Christmas <small>3/6/2016</small></h3></span>
+
+            <table class="impact-table">
+              <tbody><tr>
+                <td><i class="fa fa-clock-o"></i></td>
+                <td><strong>Hours Volunteered:</strong></td>
+                <td>7.5</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-euro"></i></td>
+                <td><strong>Funding Raised:</strong></td>
+                <td>298</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-building"></i></td>
+                <td><strong>Organisation:</strong></td>
+                <td>Meals on Wheels</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-cloud"></i></td>
+                <td><strong>Theme:</strong></td>
+                <td>Homelessness</td>
+              </tr>
+            </tbody></table>
+
+            <img class="thumbnail" src="./Foundation for Sites_files/river">
+            <p>We spent the afternoon helping out an amazing bunch of men who are working to setup a Men's Shed in Castlebar. What an amazing new facility for the people of the town. Delighted to help out</p>
+            <div class="callout">
+              <ul class="menu simple">
+                <li><a href="http://localhost:5000/profile/1#">Author: Niall O'Hara</a></li>
+                <li><a href="http://localhost:5000/profile/1#">Comments: 3</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      
+
+      <article class="grid-container">
+      <div class="grid-x align-center">
+        <div class="cell medium-8">
+
+          <div class="blog-post">
+            <span class="post-picture">
+              <img src="./Foundation for Sites_files/C2ZP352K_400x400.png" alt="Niall O&#39;Hara">
+            </span>
+            <span><h3 id="impact_description">Helping Start a new Men's Shed <small>3/6/2016</small></h3></span>
+
+            <table class="impact-table">
+              <tbody><tr>
+                <td><i class="fa fa-clock-o"></i></td>
+                <td><strong>Hours Volunteered:</strong></td>
+                <td>1.0</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-euro"></i></td>
+                <td><strong>Funding Raised:</strong></td>
+                <td>876</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-building"></i></td>
+                <td><strong>Organisation:</strong></td>
+                <td>Men's Shed</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-cloud"></i></td>
+                <td><strong>Theme:</strong></td>
+                <td>Social Isolation</td>
+              </tr>
+            </tbody></table>
+
+            <img class="thumbnail" src="./Foundation for Sites_files/mens_shed.jpeg">
+            <p>We spent the afternoon helping out an amazing bunch of men who are working to setup a Men's Shed in Castlebar. What an amazing new facility for the people of the town. Delighted to help out</p>
+            <div class="callout">
+              <ul class="menu simple">
+                <li><a href="http://localhost:5000/profile/1#">Author: Niall O'Hara</a></li>
+                <li><a href="http://localhost:5000/profile/1#">Comments: 3</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      
+
+      <article class="grid-container">
+      <div class="grid-x align-center">
+        <div class="cell medium-8">
+
+          <div class="blog-post">
+            <span class="post-picture">
+              <img src="./Foundation for Sites_files/C2ZP352K_400x400.png" alt="Niall O&#39;Hara">
+            </span>
+            <span><h3 id="impact_description">Volunteered with Local Tidy Towns <small>3/6/2016</small></h3></span>
+
+            <table class="impact-table">
+              <tbody><tr>
+                <td><i class="fa fa-clock-o"></i></td>
+                <td><strong>Hours Volunteered:</strong></td>
+                <td>2.5</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-euro"></i></td>
+                <td><strong>Funding Raised:</strong></td>
+                <td>1600</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-building"></i></td>
+                <td><strong>Organisation:</strong></td>
+                <td>Castlebar Tidy Towns</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-cloud"></i></td>
+                <td><strong>Theme:</strong></td>
+                <td>Environment</td>
+              </tr>
+            </tbody></table>
+
+            <img class="thumbnail" src="./Foundation for Sites_files/2012_0701July022012cn0017-800.jpg">
+            <p>Our team set ourselves a challenge to volunteer with one new community group every month this year. We kicked off this month with the Castlebar Tidy Towns. We helpeed their brilliant team to clean the ringroad around the town!</p>
+            <div class="callout">
+              <ul class="menu simple">
+                <li><a href="http://localhost:5000/profile/1#">Author: Niall O'Hara</a></li>
+                <li><a href="http://localhost:5000/profile/1#">Comments: 3</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      
+
+      <article class="grid-container">
+      <div class="grid-x align-center">
+        <div class="cell medium-8">
+
+          <div class="blog-post">
+            <span class="post-picture">
+              <img src="./Foundation for Sites_files/C2ZP352K_400x400.png" alt="Niall O&#39;Hara">
+            </span>
+            <span><h3 id="impact_description">Hosted Local Street Feast <small>3/6/2016</small></h3></span>
+
+            <table class="impact-table">
+              <tbody><tr>
+                <td><i class="fa fa-clock-o"></i></td>
+                <td><strong>Hours Volunteered:</strong></td>
+                <td>3.5</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-euro"></i></td>
+                <td><strong>Funding Raised:</strong></td>
+                <td>2300</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-building"></i></td>
+                <td><strong>Organisation:</strong></td>
+                <td>Street Feast</td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-cloud"></i></td>
+                <td><strong>Theme:</strong></td>
+                <td>Community</td>
+              </tr>
+            </tbody></table>
+
+            <img class="thumbnail" src="./Foundation for Sites_files/StreetFeastLibertiesAoifeGiles-1024x922.jpg">
+            <p>We spent the afternoon helping out an amazing bunch of men who are working to setup a Men's Shed in Castlebar. What an amazing new facility for the people of the town. Delighted to help out</p>
+            <div class="callout">
+              <ul class="menu simple">
+                <li><a href="http://localhost:5000/profile/1#">Author: Niall O'Hara</a></li>
+                <li><a href="http://localhost:5000/profile/1#">Comments: 3</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      
+
+
+      </div></article>
+  
+</div></article></div></article></div></article></body></html>

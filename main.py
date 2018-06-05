@@ -2,8 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from sqlalchemy import create_engine
 from sqlalchemy.pool import StaticPool
 from sqlalchemy.orm import sessionmaker
-from database_setup import Regions, Base, ImpactEntry, User
+from database_setup import Regions, Base, ImpactEntry, User, Friendships
 from sqlalchemy import desc
+from sqlalchemy import func
 
 from flask import session as login_session
 import random, string
@@ -190,11 +191,22 @@ def getUserID(email):
 
 
 
-@app.route('/profile/<int:user_id>')
+@app.route('/profile/<int:user_id>', methods=['GET', 'POST'])
 def showProfile(user_id):
     user = session.query(User).filter_by(id=user_id).one()
     impact_enteries = session.query(ImpactEntry).filter_by(user_id=user_id).order_by(desc(ImpactEntry.id)).all()
-    return render_template('profile.html', user=user, impact_enteries=impact_enteries, login_session=login_session)
+    friendships=session.query(Friendships).filter_by(followed=user_id).all()
+    session_friendship=session.query(Friendships).filter_by(followed=user_id).filter_by(follower=login_session['user_id']).all()
+    total_hours=session.query(func.sum(ImpactEntry.hours)).filter(ImpactEntry.user_id==user_id)
+    total_funding=session.query(func.sum(ImpactEntry.funding_amount)).filter(ImpactEntry.user_id==user_id)
+
+    if request.method == 'POST':
+        newFriendship = Friendships(follower=request.form['follower'], followed=request.form['followed'])
+        session.add(newFriendship)
+        session.commit()
+        return redirect(url_for('showProfile',user_id=user_id))
+    else:
+        return render_template('profile.html', user_profile=user, impact_enteries=impact_enteries, login_session=login_session,friendships=friendships, session_friendship=session_friendship, total_hours=total_hours, total_funding=total_funding)
 
 ##################################################
 ########## REGION CONTROLLER ######################

@@ -28,6 +28,22 @@
       float: left;
     }
 
+  .friend-picture img {
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      align-self: center;
+      border-radius: 50%;
+      border: #333b3e 0.75px solid;
+      float:inherit;
+    }
+
+
+
+
+
+
+
 .fa {
       position: relative;
       overflow: hidden;
@@ -539,4 +555,12 @@ footer {
   max-height: 35px;
 }
 
-#app
+#followed{
+  background-color: #E01273;
+}
+
+#stat_card{
+    background-color: #E01273;
+    border-radius: 5px;
+    width: 200px;
+}
