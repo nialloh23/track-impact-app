@@ -32,7 +32,7 @@ session = DBSession()
 ########## USER CONTROLLER #######################
 ##################################################
 
-@app.route('/login', _external=True)
+@app.route('/login')
 def userLogin():
     state = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in xrange(32))
     login_session['state'] = state
