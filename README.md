@@ -1,5 +1,5 @@
 # TrackImpact.com
-An app that enables volunteer teams to track their volunteering and fundraising activities bringing their collective impact to life.
+An app that enables volunteer teams to track their volunteering and fundraising activities bringing their collective impact to life..
 
 
 ## Getting Started
