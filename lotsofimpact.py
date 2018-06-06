@@ -5,7 +5,9 @@ from sqlalchemy.orm import sessionmaker
 
 from database_setup import Regions, Base, ImpactEntry, User
 
-engine = create_engine('sqlite:///impactdatabase.db')
+
+DATABASE_URL ,convert_unicode=True)
+engine = create_engine(DATABASE_URL ,convert_unicode=True)
 
 # Bind the engine to the metadata of the Base class so that the
 # declaratives can be accessed through a DBSession instance

@@ -88,7 +88,7 @@ class Friendships(Base):
 
 
 
-engine = create_engine('sqlite:///impactdatabase.db')
-
+DATABASE_URL = os.environ['DATABASE_URL']
+engine = create_engine(DATABASE_URL ,convert_unicode=True)
 
 Base.metadata.create_all(engine)
