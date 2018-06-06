@@ -2,6 +2,7 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+import os
 
 from database_setup import Regions, Base, ImpactEntry, User
 
