@@ -6,6 +6,7 @@ from database_setup import Regions, Base, ImpactEntry, User, Friendships
 from sqlalchemy import desc
 from sqlalchemy import func
 
+
 from flask import session as login_session
 import random, string
 from oauth2client.client import flow_from_clientsecrets
@@ -14,6 +15,7 @@ import httplib2
 import json
 from flask import make_response
 import requests
+import os
 
 
 app = Flask(__name__)
@@ -23,10 +25,21 @@ CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
 APPLICATION_NAME = "Restaurant Menu Application"
 
+##################################################
+########## CONNECT TO HEROKU DATABASE ############
+##################################################
 
-engine = create_engine('sqlite:///impactdatabase.db',connect_args={'check_same_thread':False},poolclass=StaticPool)
+DATABASE_URL = os.environ['DATABASE_URL']
+
+
+engine = create_engine(DATABASE_URL ,convert_unicode=True, connect_args={'check_same_thread':False},poolclass=StaticPool)
 Base.metadata.bind = engine
-DBSession = sessionmaker(bind=engine)
+DBSession = scoped_session(sessionmaker(autocommit=False, autoflush=False,bind=engine))
+
+def init_db():
+    import Base
+    Base.metadata.create_all(engine)
+
 session = DBSession()
 
 ##################################################
