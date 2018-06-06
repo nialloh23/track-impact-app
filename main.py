@@ -33,7 +33,7 @@ APPLICATION_NAME = "Restaurant Menu Application"
 DATABASE_URL = os.environ['DATABASE_URL']
 
 
-engine = create_engine(DATABASE_URL ,convert_unicode=True, connect_args={'check_same_thread':False},poolclass=StaticPool)
+engine = create_engine(DATABASE_URL ,convert_unicode=True)
 Base.metadata.bind = engine
 DBSession = scoped_session(sessionmaker(autocommit=False, autoflush=False,bind=engine))
 
