@@ -25,7 +25,7 @@
         <div class="top-bar-left">
           <ul class="menu">
             <li class="header-logo">
-              <a href="http://localhost:5000/regions"><img src="https://d2ltgdq21v5def.cloudfront.net/assets/logo-dark-no-tagline-30cfc772aa26c3d8c6bfdb9fc155e6728fda70ec3f9177e7654cae48d842e2f1.png"/></a>
+              <a href="{{url_for('showRegion')}}"><img src="https://d2ltgdq21v5def.cloudfront.net/assets/logo-dark-no-tagline-30cfc772aa26c3d8c6bfdb9fc155e6728fda70ec3f9177e7654cae48d842e2f1.png"/></a>
             </li>
           </ul>
         </div>
@@ -35,9 +35,9 @@
             <li class="header-profile">
               <a href="{{url_for('showProfile',user_id = login_session['user_id'])}}"><img src="{{login_session['picture']}}"/></a>
             </li>
-            <li><a href="http://localhost:5000/gdisconnect">Log Out</a></li>
+            <li><a href="{{url_for('gconnect')}}">Log Out</a></li>
             {% else %}
-            <li><a href="http://localhost:5000/login" class="button"><strong>Login</strong></a></li>
+            <li><a href="{{url_for('userLogin')}}" class="button"><strong>Login</strong></a></li>
             {% endif %}
           </ul>
         </div>
