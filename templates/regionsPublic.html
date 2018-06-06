@@ -35,7 +35,7 @@
             <li class="header-profile">
               <a href="{{url_for('showProfile',user_id = login_session['user_id'])}}"><img src="{{login_session['picture']}}"/></a>
             </li>
-            <li><a href="{{url_for('gconnect')}}">Log Out</a></li>
+            <li><a href="{{url_for('gdisconnect')}}">Log Out</a></li>
             {% else %}
             <li><a href="{{url_for('userLogin')}}" class="button"><strong>Login</strong></a></li>
             {% endif %}
