@@ -67,13 +67,11 @@
             <input type='hidden' name="followed" value="{{user_profile.id}}">
             <button name ="submit" value="1" type="submit" class="button">Follow</button>
         </form>
+        {% endif %}
 
         <script type="text/javascript">
           mixpanel.track_forms('#friend_follow', 'Followed Friend');
         </script>
-
-        {% endif %}
-
 
         {% for friend in friendships[:4] %}
           <span class="friend-picture"> <a href="{{url_for('showProfile',user_id = friend.follower)}}">  <img src="{{friend.user.picture}}"></a></span>
