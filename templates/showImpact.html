@@ -105,12 +105,12 @@
           </form>
           <script type="text/javascript">
             mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', {
-              "name":"name",
-              "hours":"hours",
-              "funding_amount":"funding_amount",
-              "organisation":"organisation",
-              "address" :"address",
-              "notes" : "notes"
+              "name":"{{last_impact.name}}",
+              "hours":"{{last_impact.hours}}",
+              "funding_amount":"{{last_impact.funding_amount}}",
+              "organisation":"{{last_impact.organisation}}",
+              "address" :"{{last_impact.address}}",
+              "notes" : "{{last_impact.notes}}"
             });
           </script>
           </div>

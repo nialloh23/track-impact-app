@@ -293,6 +293,7 @@ def deleteRegion(region_id):
 def showImpact(region_id):
     region = session.query(Regions).filter_by(id=region_id).one()
     impact_enteries = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).all()
+    last_impact_post = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).one()
 
     if request.method == 'POST':
         newImpactPost = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
@@ -303,9 +304,9 @@ def showImpact(region_id):
         return redirect(url_for('showImpact', region_id=region_id))
     else:
         if 'username' not in login_session:
-            return render_template('showImpactPublic.html', impact=impact_enteries, region=region, region_id=region_id, login_session=login_session)
+            return render_template('showImpactPublic.html', impact=impact_enteries, region=region, region_id=region_id, login_session=login_session, last_impact=last_impact_post)
         else:
-            return render_template('showImpact.html', impact=impact_enteries, region=region, region_id=region_id, login_session=login_session)
+            return render_template('showImpact.html', impact=impact_enteries, region=region, region_id=region_id, login_session=login_session, last_impact=last_impact_post)
 
 
 @app.route('/region/<int:region_id>/api')
