@@ -27,7 +27,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "Restaurant Menu Application"
 
 ##################################################
-########## CONNECT TO HEROKU DATABASE ############
+########## CONNECT TO HEROKU DATABASE #############
 ##################################################
 
 DATABASE_URL = os.environ['DATABASE_URL']
