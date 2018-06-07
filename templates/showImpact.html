@@ -78,7 +78,7 @@
             <dt>Name:</dt>
               <dd><input type ='text' size='30' id='name' name='name' required></dd>
             <dt>Hours:</dt>
-              <dd><input type ='text' size='30' id='inhours' name='hours' required></dd>
+              <dd><input type ='text' size='30' id='hours' name='hours' required></dd>
             <dt>Funding Amount:</dt>
               <dd><input type ='text' size='30' id='funding_amount' name='funding_amount' required></dd>
             <dt>Organisation:</dt>
@@ -107,8 +107,8 @@
             mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', captureData());
 
             function captureData() {
-                var input_hours = document.getElementById("inhours").value;
-                return {hours: input_hours};
+                var input_hours = document.getElementById('hours');
+                return {hours: input_hours.value};
               };
 
           </script>
