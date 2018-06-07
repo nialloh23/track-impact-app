@@ -49,7 +49,7 @@ class ImpactEntry(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
     hours = Column(Float)
-    funding_amount = Column(Float)
+    funding_amount = Column(Numeric(15,2))
     category = Column(String(80))
     organisation = Column(String(80))
     created_at = Column(String(80))

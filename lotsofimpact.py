@@ -46,30 +46,30 @@ session.commit()
 
 
 
-User3 = User(name="Niall O'Hara", email="niall@changex.org",
+User3 = User(name="Niall O'Hara", email="niall@changex1.org",
              picture='https://pbs.twimg.com/profile_images/580423342903148545/C2ZP352K_400x400.png',
              location="Castlebar,Mayo", phone_number="0871131932", job_title="Product Manager", facebook_profile="https://www.facebook.com/nialloh23",
              linkedin_profile="https://www.linkedin.com/in/niallohara1/", twitter_profile="https://twitter.com/nialloh23")
 
-session.add(User1)
+session.add(User3)
 session.commit()
 
 
-User4 = User(name="Niall O'Hara", email="niall@changex.org",
+User4 = User(name="Niall O'Hara", email="niall@changex2.org",
              picture='https://pbs.twimg.com/profile_images/580423342903148545/C2ZP352K_400x400.png',
              location="Castlebar,Mayo", phone_number="0871131932", job_title="Product Manager", facebook_profile="https://www.facebook.com/nialloh23",
              linkedin_profile="https://www.linkedin.com/in/niallohara1/", twitter_profile="https://twitter.com/nialloh23")
 
-session.add(User1)
+session.add(User4)
 session.commit()
 
 
-User5 = User(name="Niall O'Hara", email="niall@changex.org",
+User5 = User(name="Niall O'Hara", email="niall@changex3.org",
              picture='https://pbs.twimg.com/profile_images/580423342903148545/C2ZP352K_400x400.png',
              location="Castlebar,Mayo", phone_number="0871131932", job_title="Product Manager", facebook_profile="https://www.facebook.com/nialloh23",
              linkedin_profile="https://www.linkedin.com/in/niallohara1/", twitter_profile="https://twitter.com/nialloh23")
 
-session.add(User1)
+session.add(User5)
 session.commit()
 
 
@@ -259,7 +259,7 @@ region5 = Regions(user_id=1,name="Roscommon", location="Roscommon,Ireland")
 session.add(region1)
 session.commit()
 
-ImpactEntry1 = ImpactEntry(name="Hosted Local Street Feast", hours="3.5", funding_amount='2,300',
+ImpactEntry1 = ImpactEntry(name="Hosted Local Street Feast", hours="3.5", funding_amount='2300',
                             category="Community", organisation="Street Feast", created_at="03/06/2016",
                             picture="http://streetfeast.ie/wp-content/uploads/2018/05/StreetFeastLibertiesAoifeGiles-1024x922.jpg",address="Castlebar",
                             notes="We spent the afternoon helping out an amazing bunch of men who are working to setup a Men's Shed in Castlebar. What an amazing new facility for the people of the town. Delighted to help out",
@@ -268,7 +268,7 @@ session.add(ImpactEntry1)
 session.commit()
 
 
-ImpactEntry2 = ImpactEntry(name="Volunteered with Local Tidy Towns", hours="2.5", funding_amount='1,600',
+ImpactEntry2 = ImpactEntry(name="Volunteered with Local Tidy Towns", hours="2.5", funding_amount='1600',
                             category="Environment", organisation="Castlebar Tidy Towns", created_at="04/07/2016",
                             picture="http://www.millstreet.ie/blog/wp-content/uploads/2012/07/2012_0701July022012cn0017-800.jpg",address="Castlebar",
                             notes="Our team set ourselves a challenge to volunteer with one new community group every month this year. We kicked off this month with the Castlebar Tidy Towns. We helpeed their brilliant team to clean the ringroad around the town!",
