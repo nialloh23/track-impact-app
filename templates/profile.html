@@ -65,7 +65,7 @@
         <form action="{{ url_for('showProfile', user_id=user_profile.id )}}" method="post" class="friend_follow">
             <input type='hidden' name="follower" value="{{login_session['user_id']}}">
             <input type='hidden' name="followed" value="{{user_profile.id}}">
-            <button name ="submit" value="1" type="submit" class="friend_follow button">Follow</button>
+            <button name ="submit" value="1" type="submit" >Follow</button>
         </form>
         {% endif %}
 
