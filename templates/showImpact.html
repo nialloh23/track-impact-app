@@ -72,7 +72,7 @@
           <h3 id=new_impact_entry>New Impact Entry</h3>
 
           <div class = 'pane'>
-          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_post'>
+          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_post' onsubmit="captureData()">
 
           <dl>
             <dt>Name:</dt>
@@ -108,7 +108,9 @@
 
             function captureData() {
                 var name = document.getElementById("name").value;
+                console.log(name);
                 var hours = document.getElementById("hours").value;
+                console.log(hours);
                 var funding_amount = document.getElementById("funding_amount").value;
                 var organisation = document.getElementById("organisation").value;
                 var address = document.getElementById("address").value;
