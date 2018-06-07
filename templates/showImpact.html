@@ -72,7 +72,7 @@
           <h3 id=new_impact_entry>New Impact Entry</h3>
 
           <div class = 'pane'>
-          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post'>
+          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_entry'>
 
           <dl>
             <dt>Name:</dt>
@@ -103,6 +103,9 @@
           <input type='submit' value='Create'>
 
           </form>
+          <script type="text/javascript">
+            mixpanel.track_forms('#new_impact_entry', 'Submit Impact Post');
+          </script>
           </div>
 
 
