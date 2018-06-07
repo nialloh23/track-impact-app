@@ -37,10 +37,6 @@ engine = create_engine(DATABASE_URL ,convert_unicode=True)
 Base.metadata.bind = engine
 DBSession = scoped_session(sessionmaker(autocommit=False, autoflush=False,bind=engine))
 
-def init_db():
-    import Base
-    Base.metadata.create_all(engine)
-
 session = DBSession()
 
 ##################################################

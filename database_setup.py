@@ -17,7 +17,7 @@ class User(Base):
     name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
     location = Column(String(250))
-    picture = Column(String(80))
+    picture = Column(String(250))
     phone_number = Column(String(80))
     job_title = Column(String(80))
     facebook_profile = Column(String(80))
