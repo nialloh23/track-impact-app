@@ -72,7 +72,7 @@
           <h3 id=new_impact_entry>New Impact Entry</h3>
 
           <div class = 'pane'>
-          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_post' onsubmit="captureData()">
+          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_post'>
 
           <dl>
             <dt>Name:</dt>
@@ -107,8 +107,8 @@
             mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', captureData());
 
             function captureData() {
-                var post_name = document.getElementById("name").value;
-                return {name: post_name};
+                var input_hours = document.getElementById("hours");
+                return {hours: input_hours.value};
               };
 
           </script>
