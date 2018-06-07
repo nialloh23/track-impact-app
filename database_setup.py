@@ -48,8 +48,8 @@ class ImpactEntry(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(80), nullable=False)
-    hours = Column(String(8))
-    funding_amount = Column(String(8))
+    hours = Column(Float)
+    funding_amount = Column(Float)
     category = Column(String(80))
     organisation = Column(String(80))
     created_at = Column(String(80))

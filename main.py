@@ -28,7 +28,7 @@ APPLICATION_NAME = "Restaurant Menu Application"
 
 ##################################################
 ########## CONNECT TO HEROKU DATABASE #############
-##################################################
+###################################################
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
