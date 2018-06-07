@@ -293,7 +293,7 @@ def deleteRegion(region_id):
 def showImpact(region_id):
     region = session.query(Regions).filter_by(id=region_id).one()
     impact_enteries = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).all()
-    last_impact_post = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).one()
+    last_impact_post = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).first()
 
     if request.method == 'POST':
         newImpactPost = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
