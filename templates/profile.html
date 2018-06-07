@@ -30,13 +30,16 @@
           <li class="header-profile">
             <a href="{{url_for('showProfile',user_id = login_session['user_id'])}}"><img src="{{login_session['picture']}}"/></a>
           </li>
-          <li><a href="{{url_for('gdisconnect')}}">Log Out</a></li>
+          <li><a href="{{url_for('gdisconnect')}}" id="log_out">Log Out</a></li>
           {% else %}
           <li><a href="{{url_for('userLogin')}}" class="button"><strong>Login</strong></a></li>
           {% endif %}
         </ul>
       </div>
     </div>
+    <script type="text/javascript">
+      mixpanel.track_forms('#log_out', 'Logged-out');
+    </script>
   <!-- End Top Bar -->
 
       <div class="callout large primary">
@@ -59,11 +62,16 @@
         <form><button name ="submit" value="1" type="submit" class="button">Followed</button></form>
 
         {% else %}
-        <form action="{{ url_for('showProfile', user_id=user_profile.id )}}" method="post">
+        <form action="{{ url_for('showProfile', user_id=user_profile.id )}}" method="post" id="friend_follow">
             <input type='hidden' name="follower" value="{{login_session['user_id']}}">
             <input type='hidden' name="followed" value="{{user_profile.id}}">
             <button name ="submit" value="1" type="submit" class="button">Follow</button>
         </form>
+
+        <script type="text/javascript">
+          mixpanel.track_forms('#friend_follow', 'Followed Friend');
+        </script>
+
         {% endif %}
 
 
