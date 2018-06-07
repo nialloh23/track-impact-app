@@ -107,17 +107,9 @@
             mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', captureData());
 
             function captureData() {
-                var name = document.getElementById("name").value;
-                console.log(name);
-                var hours = document.getElementById("hours").value;
-                console.log(hours);
-                var funding_amount = document.getElementById("funding_amount").value;
-                var organisation = document.getElementById("organisation").value;
-                var address = document.getElementById("address").value;
-                var picture = document.getElementById("picture").value;
-                var user_id = document.getElementById("user_id").value;
-                var notes = document.getElementById("notes").value;
-                }
+                var post_name = document.getElementById("name").value;
+                return {name: post_name};
+              };
 
           </script>
           </div>
