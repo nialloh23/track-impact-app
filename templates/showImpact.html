@@ -104,14 +104,7 @@
 
           </form>
           <script type="text/javascript">
-            mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', captureData() {
-              "name":"name",
-              "hours":"hours",
-              "funding_amount":"funding_amount",
-              "organisation":"organisation",
-              "address" :"address",
-              "notes" : "notes"
-            });
+            mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', captureData());
 
             function captureData() {
                 var name = document.getElementById("name").value;
