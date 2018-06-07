@@ -76,20 +76,20 @@
 
           <dl>
             <dt>Name:</dt>
-              <dd><input type ='text' size='30' name='name' required></dd>
+              <dd><input type ='text' size='30' id='name' name='name' required></dd>
             <dt>Hours:</dt>
-              <dd><input type ='text' size='30' name='hours' required></dd>
+              <dd><input type ='text' size='30' id='hours' name='hours' required></dd>
             <dt>Funding Amount:</dt>
-              <dd><input type ='text' size='30' name='funding_amount' required></dd>
+              <dd><input type ='text' size='30' id='funding_amount' name='funding_amount' required></dd>
             <dt>Organisation:</dt>
-               <dd><input type ='text' size='30' name='organisation' required></dd>
+               <dd><input type ='text' size='30' id='organisation' name='organisation' required></dd>
             <dt>Address:</dt>
-              <dd><input type = 'text' size = '30' name='address' required></dd>
+              <dd><input type = 'text' size = '30' id='address' name='address' required></dd>
             <dt>Picture:</dt>
-              <dd><input type = 'text' size = '30' name='picture' required></dd>
-              <dd><input type = 'hidden' size = '30' name='user_id' value={{login_session['user_id']}}></dd>
+              <dd><input type = 'text' size = '30' id='picutre' name='picture' required></dd>
+              <dd><input type = 'hidden' size = '30' id='user_id' name='user_id' value={{login_session['user_id']}}></dd>
             <dt>Notes:</dt>
-              <dd><textarea name = 'notes' rows='5' cols='30' required></textarea></dd>
+              <dd><textarea name = 'notes' rows='5' cols='30' id='notes' required></textarea></dd>
 
             <dt>Category:</dt>
               <dd><input type ='radio' name='category' value='Homelessness' checked>Other</dd>
@@ -104,14 +104,26 @@
 
           </form>
           <script type="text/javascript">
-            mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', {
-              "name":"{{last_impact.name}}",
-              "hours":"{{last_impact.hours}}",
-              "funding_amount":"{{last_impact.funding_amount}}",
-              "organisation":"{{last_impact.organisation}}",
-              "address" :"{{last_impact.address}}",
-              "notes" : "{{last_impact.notes}}"
+            mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', captureData() {
+              "name":"name",
+              "hours":"hours",
+              "funding_amount":"funding_amount",
+              "organisation":"organisation",
+              "address" :"address",
+              "notes" : "notes"
             });
+
+            function captureData() {
+                var name = document.getElementById("name").value;
+                var hours = document.getElementById("hours").value;
+                var funding_amount = document.getElementById("funding_amount").value;
+                var organisation = document.getElementById("organisation").value;
+                var address = document.getElementById("address").value;
+                var picture = document.getElementById("picture").value;
+                var user_id = document.getElementById("user_id").value;
+                var notes = document.getElementById("notes").value;
+                }
+
           </script>
           </div>
 
