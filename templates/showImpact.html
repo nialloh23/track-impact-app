@@ -42,8 +42,7 @@
     </div>
 
     <script type="text/javascript">
-      mixpanel.track("log_out"
-      });
+      mixpanel.track_links("#log_out","logged Out");
    </script>
   <!-- End Top Bar -->
 
@@ -163,10 +162,7 @@
                 <li><a href="#">Comments: 3</a></li>
 								<li><a href='{{url_for('editImpactEntry', region_id = region.id, impact_id=i.id ) }}'>Edit</a></li>
 								<li><a href='{{url_for('deleteImpactEntry', region_id = region.id, impact_id=i.id ) }}' id='delete_post'>Delete</a></li>
-                <script type="text/javascript">
-                mixpanel.track("delete_post"
-                });
-               </script>
+
                 {% else %}
                 <li><a href="#">Comments: 3</a></li>
                 {% endif %}
