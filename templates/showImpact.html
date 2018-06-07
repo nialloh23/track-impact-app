@@ -72,13 +72,13 @@
           <h3 id=new_impact_entry>New Impact Entry</h3>
 
           <div class = 'pane'>
-          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_post'>
+          <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_post' onsubmit="captureData()">
 
           <dl>
             <dt>Name:</dt>
               <dd><input type ='text' size='30' id='name' name='name' required></dd>
             <dt>Hours:</dt>
-              <dd><input type ='text' size='30' id='hours' name='hours' required></dd>
+              <dd><input type ='text' size='30' id='inhours' name='hours' required></dd>
             <dt>Funding Amount:</dt>
               <dd><input type ='text' size='30' id='funding_amount' name='funding_amount' required></dd>
             <dt>Organisation:</dt>
@@ -107,8 +107,8 @@
             mixpanel.track_forms('#new_impact_post', 'Submit Impact Post', captureData());
 
             function captureData() {
-                var input_hours = document.getElementById("hours");
-                return {hours: 3};
+                var input_hours = document.getElementById("inhours").value;
+                return {hours: input_hours};
               };
 
           </script>
