@@ -215,6 +215,10 @@ def showProfile(user_id):
     total_funding=session.query(func.sum(ImpactEntry.funding_amount)).filter(ImpactEntry.user_id==user_id)
 
     if request.method == 'POST':
+        mp.track('#new_region', 'Followed Friend', {
+        'Follower': request.form['follower'],
+        'Followed': request.form['followed'],
+        })
         newFriendship = Friendships(follower=request.form['follower'], followed=request.form['followed'])
         session.add(newFriendship)
         session.commit()
@@ -258,6 +262,10 @@ def newRegion():
     if 'email' not in login_session:
         return redirect('/login')
     if request.method == 'POST':
+        mp.track('#new_region', 'Create New Region', {
+        'Region Name': request.form['name'],
+        })
+
         newRegion = Regions(name=request.form['name'], user_id=login_session['user_id'])
         session.add(newRegion)
         session.commit()
@@ -300,7 +308,7 @@ def showImpact(region_id):
 
     if request.method == 'POST':
 
-        mp.track('#new_impact_post', 'Submit', {
+        mp.track('#new_impact_post', 'Submit Impact Post', {
         'Name': request.form['name'],
         'Hours': request.form['hours'],
         'Funding Amount': request.form['funding_amount'],

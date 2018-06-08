@@ -65,13 +65,10 @@
         <form action="{{ url_for('showProfile', user_id=user_profile.id )}}" method="post">
             <input type='hidden' name="follower" value="{{login_session['user_id']}}">
             <input type='hidden' name="followed" value="{{user_profile.id}}">
-            <button name ="submit" value="1" type="submit" class="button" id='follow'>Follow</button>
+            <button name ="submit" value="1" type="submit" class="button">Follow</button>
         </form>
         {% endif %}
 
-        <script type="text/javascript">
-          mixpanel.track_links('#follow', 'Followed Friend');
-        </script>
 
         {% for friend in friendships[:4] %}
           <span class="friend-picture"> <a href="{{url_for('showProfile',user_id = friend.follower)}}">  <img src="{{friend.user.picture}}"></a></span>
