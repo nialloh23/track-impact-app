@@ -137,12 +137,12 @@ def gconnect():
     'Login Provider': login_session['provider'],
     })
 
-    mp.people_set('login_session['email']', {
+    mp.people_set(login_session['email'], {
         '$first_name'    : 'John',
         '$last_name'     : 'Doe',
         '$email'         : 'login_session['email']',
         'Favorite Color' : 'red',
-        'Login Provider' : 'login_session['provider']'
+        'Login Provider' : 'login_session['provider']',
         'User Name'      : 'login_session['username']'
     }, meta = {'$ignore_time' : 'true', '$ip' : 0})
 
