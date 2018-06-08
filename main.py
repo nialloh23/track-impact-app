@@ -130,6 +130,13 @@ def gconnect():
     # ADD PROVIDER TO LOGIN SESSION
     login_session['provider'] = 'google'
 
+    #SEND LOGIN SESSION DATA TO Mixpanel
+    mp.track('#log_out', 'Log Out', {
+    'User': login_session['username'],
+    'Email': login_session['email'],
+    'Login Provider': login_session['provider'],
+    })
+
 
     # see if user exists, if it doesn't make a new one
     user_id = getUserID(data["email"])
