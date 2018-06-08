@@ -139,6 +139,8 @@ def gconnect():
     })
 
     user_email= data['email']
+    user_name= data['username']
+    provider= 'google'
 
 
 
@@ -151,10 +153,10 @@ def gconnect():
     mp.people_set('user_id', {
         '$first_name'    : 'John',
         '$last_name'     : 'Doe',
-        '$email'         : 'login_session['email']',
+        '$email'         : 'user_email',
         'Favorite Color' : 'red',
-        'Login Provider' : 'login_session['provider']',
-        'User Name'      : 'login_session['username']'
+        'Login Provider' : 'provider',
+        'User Name'      : 'user_name'
     }, meta = {'$ignore_time' : 'true', '$ip' : 0})
 
 
