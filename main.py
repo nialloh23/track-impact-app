@@ -301,8 +301,13 @@ def showImpact(region_id):
     if request.method == 'POST':
 
         mp.track('#new_impact_post', 'Submit', {
-        'Old Plan': 'Business',
-        'New Plan': 'Premium'
+        'Name': request.form['name'],
+        'Hours': request.form['hours'],
+        'Funding Amount': request.form['funding_amount'],
+        'Category': request.form['category'],
+        'Organisation': request.form['organisation'],
+        'Notes': request.form['notes'],
+        'Address': request.form['address'],
         })
 
         newImpactPost = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
