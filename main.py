@@ -137,7 +137,17 @@ def gconnect():
     'Login Provider': login_session['provider'],
     })
 
-    mp.people_set(login_session['email'], {
+    user_email= data['email']
+
+
+
+    # see if user exists, if it doesn't make a new one
+    user_id = getUserID(data["email"])
+    if not user_id:
+        user_id = createUser(login_session)
+    login_session['user_id'] = user_id
+
+    mp.people_set('login_session['user_id']', {
         '$first_name'    : 'John',
         '$last_name'     : 'Doe',
         '$email'         : 'login_session['email']',
@@ -148,11 +158,6 @@ def gconnect():
 
 
 
-    # see if user exists, if it doesn't make a new one
-    user_id = getUserID(data["email"])
-    if not user_id:
-        user_id = createUser(login_session)
-    login_session['user_id'] = user_id
 
     output = ''
     output += '<h6>Welcome, '
