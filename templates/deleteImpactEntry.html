@@ -19,7 +19,7 @@
 </body>
 
 <script type="text/javascript">
-  mixpanel.track_forms('#delete_impact_post', 'Delete Impact Post');
+  mixpanel.track_forms('#delete_impact_post', 'Delete Impact Post', {'Impact ID': '{{Entry.id}}', 'Impact Name':'{{Entry.name}}'});
 </script>
 
 </html>
