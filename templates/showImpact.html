@@ -82,30 +82,30 @@
           <div class = 'pane'>
           <form action="{{ url_for('showImpact', region_id=region_id )}}" method = 'post' id='new_impact_post' onsubmit='return captureData()'>
 
-          <dl>
-            <dt>Name:</dt>
-              <dd><input type ='text' size='30' id='name' name='name' required></dd>
-            <dt>Hours:</dt>
-              <dd><input type ='text' size='30' id='hours' value='' name='hours' required></dd>
-            <dt>Funding Amount:</dt>
-              <dd><input type ='text' size='30' id='funding_amount' name='funding_amount' required></dd>
-            <dt>Organisation:</dt>
-               <dd><input type ='text' size='30' id='organisation' name='organisation' required></dd>
-            <dt>Address:</dt>
-              <dd><input type = 'text' size = '30' id='address' name='address' required></dd>
-            <dt>Picture:</dt>
-              <dd><input type = 'text' size = '30' id='picutre' name='picture' required></dd>
-              <dd><input type = 'hidden' size = '30' id='user_id' name='user_id' value={{login_session['user_id']}}></dd>
-            <dt>Notes:</dt>
-              <dd><textarea name = 'notes' rows='5' cols='30' id='notes' required></textarea></dd>
+              <dl>
+                <dt>Name:</dt>
+                  <dd><input type ='text' size='30' id='name' name='name' required></dd>
+                <dt>Hours:</dt>
+                  <dd><input type ='text' size='30' id='hours' value='' name='hours' required></dd>
+                <dt>Funding Amount:</dt>
+                  <dd><input type ='text' size='30' id='funding_amount' name='funding_amount' required></dd>
+                <dt>Organisation:</dt>
+                   <dd><input type ='text' size='30' id='organisation' name='organisation' required></dd>
+                <dt>Address:</dt>
+                  <dd><input type = 'text' size = '30' id='address' name='address' required></dd>
+                <dt>Picture:</dt>
+                  <dd><input type = 'text' size = '30' id='picutre' name='picture' required></dd>
+                  <dd><input type = 'hidden' size = '30' id='user_id' name='user_id' value={{login_session['user_id']}}></dd>
+                <dt>Notes:</dt>
+                  <dd><textarea name = 'notes' rows='5' cols='30' id='notes' required></textarea></dd>
 
-            <dt>Category:</dt>
-              <dd><input type ='radio' name='category' value='Homelessness' checked>Other</dd>
-              <dd><input type ='radio' name='category' value='Homelessness'>Homelessness</dd>
-              <dd><input type ='radio' name='category' value='Social Isolation'>Social Isolation</dd>
-              <dd><input type ='radio' name='category' value='Eduction'>Education</dd>
-              <dd><input type ='radio' name='category' value='Enviornment'>Enviornment</dd>
-          </dl>
+                <dt>Category:</dt>
+                  <dd><input type ='radio' name='category' value='Homelessness' checked>Other</dd>
+                  <dd><input type ='radio' name='category' value='Homelessness'>Homelessness</dd>
+                  <dd><input type ='radio' name='category' value='Social Isolation'>Social Isolation</dd>
+                  <dd><input type ='radio' name='category' value='Eduction'>Education</dd>
+                  <dd><input type ='radio' name='category' value='Enviornment'>Enviornment</dd>
+              </dl>
 
 
           <input type='submit' value='Create'>

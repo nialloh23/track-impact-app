@@ -6,6 +6,9 @@ from sqlalchemy.orm import scoped_session
 from database_setup import Regions, Base, ImpactEntry, User, Friendships
 from sqlalchemy import desc
 from sqlalchemy import func
+from mixpanel import Mixpanel
+
+mp = Mixpanel('39c50c9ebffb3bd56f5375475546b405')
 
 
 from flask import session as login_session
@@ -296,6 +299,12 @@ def showImpact(region_id):
     last_impact_post = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).first()
 
     if request.method == 'POST':
+
+        mp.track('#new_impact_post', 'Submit', {
+        'Old Plan': 'Business',
+        'New Plan': 'Premium'
+        })
+
         newImpactPost = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
         funding_amount=request.form['funding_amount'],category=request.form['category'], organisation=request.form['organisation'],
         notes=request.form['notes'], picture=request.form['picture'], address=request.form['address'], region_id=region_id, user_id=request.form['user_id'])
