@@ -131,7 +131,7 @@ def gconnect():
     login_session['provider'] = 'google'
 
     #SEND LOGIN SESSION DATA TO Mixpanel
-    mp.track('#log_in', 'Login', {
+    mp.track('login_session['email']', 'Login', {
     'User': login_session['username'],
     'Email': login_session['email'],
     'Login Provider': login_session['provider'],
@@ -147,7 +147,7 @@ def gconnect():
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
 
-    mp.people_set('login_session['user_id']', {
+    mp.people_set('user_id' {
         '$first_name'    : 'John',
         '$last_name'     : 'Doe',
         '$email'         : 'login_session['email']',
@@ -177,7 +177,7 @@ def gconnect():
 @app.route('/gdisconnect')
 def gdisconnect():
     #MixpanelTrack
-    mp.track('#log_out', 'Log Out', {
+    mp.track('login_session['email']', 'Log Out', {
     'User': login_session['username'],
     'Email': login_session['email'],
     })
@@ -243,7 +243,7 @@ def showProfile(user_id):
     total_funding=session.query(func.sum(ImpactEntry.funding_amount)).filter(ImpactEntry.user_id==user_id)
 
     if request.method == 'POST':
-        mp.track('#new_follow', 'Followed Friend', {
+        mp.track('login_session['email']', 'Followed Friend', {
         'Follower': request.form['follower'],
         'Followed': request.form['followed'],
         })
@@ -290,7 +290,7 @@ def newRegion():
     if 'email' not in login_session:
         return redirect('/login')
     if request.method == 'POST':
-        mp.track('#new_region', 'Create New Region', {
+        mp.track('login_session['email']', 'Create New Region', {
         'Region Name': request.form['name'],
         })
 
@@ -336,7 +336,7 @@ def showImpact(region_id):
 
     if request.method == 'POST':
 
-        mp.track('#new_impact_post', 'Submit Impact Post', {
+        mp.track('login_session['email']', 'Submit Impact Post', {
         'Name': request.form['name'],
         'Hours': request.form['hours'],
         'Funding Amount': request.form['funding_amount'],
