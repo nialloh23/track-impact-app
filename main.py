@@ -154,6 +154,12 @@ def gconnect():
 
 @app.route('/gdisconnect')
 def gdisconnect():
+    #MixpanelTrack
+    mp.track('#log_out', 'Log Out', {
+    'User': login_session['username'],
+    'Email': login_session['email'],
+    })
+
     # Only disconnect a connected user.
     access_token = login_session.get('access_token')
     if access_token is None:
@@ -215,7 +221,7 @@ def showProfile(user_id):
     total_funding=session.query(func.sum(ImpactEntry.funding_amount)).filter(ImpactEntry.user_id==user_id)
 
     if request.method == 'POST':
-        mp.track('#new_region', 'Followed Friend', {
+        mp.track('#new_follow', 'Followed Friend', {
         'Follower': request.form['follower'],
         'Followed': request.form['followed'],
         })
