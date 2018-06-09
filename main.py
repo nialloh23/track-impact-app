@@ -126,21 +126,16 @@ def gconnect():
     login_session['username'] = data['name']
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
-    user_email = data['email']
 
     # ADD PROVIDER TO LOGIN SESSION
     login_session['provider'] = 'google'
 
     #SEND LOGIN SESSION DATA TO Mixpanel
-    mp.track('user_email', 'Login', {
+    mp.track(1, 'Login', {
     'User': login_session['username'],
     'Email': login_session['email'],
     'Login Provider': login_session['provider'],
     })
-
-    user_email= data['email']
-    user_name= data['username']
-    provider= 'google'
 
 
 
@@ -150,14 +145,14 @@ def gconnect():
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
 
-    mp.people_set('user_id', {
+    mp.people_set(1, {
         '$first_name'    : 'John',
         '$last_name'     : 'Doe',
-        '$email'         : 'user_email',
+        '$email'         : 'test@changex.org',
         'Favorite Color' : 'red',
         'Login Provider' : 'provider',
-        'User Name'      : 'user_name'
-    }, meta = {'$ignore_time' : 'true', '$ip' : 0})
+        'User Name'      : 'test username'
+    })
 
 
 
