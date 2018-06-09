@@ -137,7 +137,7 @@ def gconnect():
     login_session['provider'] = 'google'
 
     #SEND LOGIN SESSION DATA TO Mixpanel
-    mp.track('user_id', 'Login', {
+    mp.track(login_session['email'], 'Login', {
     'User': login_session['username'],
     'First Name': login_session['given_name'],
     'Last Name' : login_session['family_name'],
@@ -185,7 +185,7 @@ def gconnect():
 @app.route('/gdisconnect')
 def gdisconnect():
     #MixpanelTrack
-    mp.track('user_email', 'Log Out', {
+    mp.track(login_session['email'], 'Log Out', {
     'User': login_session['username'],
     'Email': login_session['email'],
     })
