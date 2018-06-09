@@ -186,7 +186,11 @@ def gconnect():
 
 @app.route('/gdisconnect')
 def gdisconnect():
-
+    #MixpanelTrack
+    mp.track('user_email', 'Log Out', {
+    'User': login_session['username'],
+    'Email': login_session['email'],
+    })
 
     ## Only disconnect a connected user.
     access_token = login_session.get('access_token')
@@ -207,11 +211,7 @@ def gdisconnect():
         del login_session['given_name']
         del login_session['family_name']
         response = make_response(json.dumps('Successfully disconnected.'), 200)
-        #MixpanelTrack
-        mp.track('user_email', 'Log Out', {
-        'User': login_session['username'],
-        'Email': login_session['email'],
-        })
+
         return redirect(url_for('showRegion'))
     else:
         response = make_response(json.dumps('Failed to revoke token for given user.', 400))
