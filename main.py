@@ -254,7 +254,7 @@ def showProfile(user_id):
     total_funding=session.query(func.sum(ImpactEntry.funding_amount)).filter(ImpactEntry.user_id==user_id)
 
     if request.method == 'POST':
-        mp.track('user_email', 'Followed Friend', {
+        mp.track(login_session['email'], 'Followed Friend', {
         'Follower': request.form['follower'],
         'Followed': request.form['followed'],
         })
@@ -301,7 +301,7 @@ def newRegion():
     if 'email' not in login_session:
         return redirect('/login')
     if request.method == 'POST':
-        mp.track('user_email', 'Create New Region', {
+        mp.track(login_session['email'], 'Create New Region', {
         'Region Name': request.form['name'],
         })
 
@@ -347,7 +347,7 @@ def showImpact(region_id):
 
     if request.method == 'POST':
 
-        mp.track('user_email', 'Submit Impact Post', {
+        mp.track(login_session['email'], 'Submit Impact Post', {
         'Name': request.form['name'],
         'Hours': request.form['hours'],
         'Funding Amount': request.form['funding_amount'],
