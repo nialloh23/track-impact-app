@@ -131,7 +131,7 @@ def gconnect():
     login_session['family_name'] = data['family_name']
     #login_session['gender'] = data['gender']
     #login_session['birthdate'] = data['birthdate']
-    login_session['phone_number'] = data['phone_number']
+    #login_session['phone_number'] = data['phone_number']
 
     # ADD PROVIDER TO LOGIN SESSION
     login_session['provider'] = 'google'
@@ -160,7 +160,7 @@ def gconnect():
         'Favorite Color' : 'red',
         'Login Provider' : login_session['provider'],
         'User Name'      : login_session['username'],
-        'Phone Number'   : login_session['phone_number'],
+        #'Phone Number'   : login_session['phone_number'],
         #'Birth Date'     : login_session['birthdate'],
         #'Gender'         : login_session['gender'],
     })
