@@ -30,6 +30,13 @@
 
     <body class=homepage_body>
 
+    <script>
+      analytics.identify(login_session['user_id'], {
+        name: login_session['username'],
+        email: login_session['email']
+      });
+    </script>
+
     <script type="text/javascript">
         mixpanel.alias('niall@hello.com', distinct_id)
     </script>
