@@ -154,15 +154,15 @@ def gconnect():
     login_session['user_id'] = user_id
 
     mp.people_set('user_id', {
-        '$first_name'    : 'login_session['given_name']',
-        '$last_name'     : 'login_session['family_name']',
+        '$first_name'    : login_session['given_name'],
+        '$last_name'     : login_session['family_name'],
         '$email'         :  login_session['email'],
         'Favorite Color' : 'red',
         'Login Provider' : login_session['provider'],
         'User Name'      : login_session['username'],
         'Phone Number'   : login_session['phone_number'],
         'Birth Date'     : login_session['birthdate'],
-        'Gender'         : login_session['gender'],             
+        'Gender'         : login_session['gender'],
     })
 
 
