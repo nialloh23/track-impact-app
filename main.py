@@ -127,12 +127,20 @@ def gconnect():
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
 
+    login_session['given_name'] = data['given_name']
+    login_session['family_name'] = data['family_name']
+    login_session['gender'] = data['gender']
+    login_session['birthdate'] = data['birthdate']
+    login_session['phone_number'] = data['phone_number']
+
     # ADD PROVIDER TO LOGIN SESSION
     login_session['provider'] = 'google'
 
     #SEND LOGIN SESSION DATA TO Mixpanel
     mp.track('user_id', 'Login', {
     'User': login_session['username'],
+    'First Name': login_session['given_name'],
+    'Last Name' : login_session['family_name'],
     'Email': login_session['email'],
     'Login Provider': login_session['provider'],
     })
@@ -146,12 +154,15 @@ def gconnect():
     login_session['user_id'] = user_id
 
     mp.people_set('user_id', {
-        '$first_name'    : 'Niall',
-        '$last_name'     : 'Doe',
+        '$first_name'    : 'login_session['given_name']',
+        '$last_name'     : 'login_session['family_name']',
         '$email'         :  login_session['email'],
         'Favorite Color' : 'red',
         'Login Provider' : login_session['provider'],
-        'User Name'      : login_session['username']
+        'User Name'      : login_session['username'],
+        'Phone Number'   : login_session['phone_number'],
+        'Birth Date'     : login_session['birthdate'],
+        'Gender'         : login_session['gender'],             
     })
 
 
