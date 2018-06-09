@@ -153,6 +153,9 @@ def gconnect():
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
 
+
+    mp.alias(login_session['email'], mixpanel.distinctId)
+
     mp.people_set(login_session['email'], {
         '$first_name'    : login_session['given_name'],
         '$last_name'     : login_session['family_name'],
