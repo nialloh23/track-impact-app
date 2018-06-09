@@ -23,6 +23,10 @@
 
     <body class=homepage_body>
 
+    <script>
+      distinct_id= mixpanel.get_distinct_id()
+      mixpanel.alias(login_session['email'], distinct_id)
+    </script>
 
 
       <!-- Start Top Bar -->

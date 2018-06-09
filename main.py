@@ -154,9 +154,6 @@ def gconnect():
     login_session['user_id'] = user_id
 
 
-    distinct_id= mp.get_distinct_id()
-    mp.alias(login_session['email'], distinct_id)
-
     mp.people_set(login_session['email'], {
         '$first_name'    : login_session['given_name'],
         '$last_name'     : login_session['family_name'],
