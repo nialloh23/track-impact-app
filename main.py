@@ -145,13 +145,13 @@ def gconnect():
         user_id = createUser(login_session)
     login_session['user_id'] = user_id
 
-    mp.people_set(1, {
-        '$first_name'    : 'John',
+    mp.people_set('user_id', {
+        '$first_name'    : 'Niall',
         '$last_name'     : 'Doe',
-        '$email'         : 'test@changex.org',
+        '$email'         : 'test1@changex.org',
         'Favorite Color' : 'red',
         'Login Provider' : 'provider',
-        'User Name'      : 'test username'
+        'User Name'      : 'test1 username'
     })
 
 
