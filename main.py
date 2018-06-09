@@ -7,7 +7,9 @@ from database_setup import Regions, Base, ImpactEntry, User, Friendships
 from sqlalchemy import desc
 from sqlalchemy import func
 from mixpanel import Mixpanel
+import analytics
 
+analytics.write_key = 'N0e9ZzG3TwjnuCi76InqHP6Hizg2Mclg'
 mp = Mixpanel('39c50c9ebffb3bd56f5375475546b405')
 
 
@@ -302,9 +304,16 @@ def newRegion():
     if 'email' not in login_session:
         return redirect('/login')
     if request.method == 'POST':
+
+        analytics.trackForm('Created New Region', {
+          Region Name: request.form['name'],
+        });
+
         mp.track(login_session['email'], 'Create New Region', {
         'Region Name': request.form['name'],
         })
+
+
 
         newRegion = Regions(name=request.form['name'], user_id=login_session['user_id'])
         session.add(newRegion)
