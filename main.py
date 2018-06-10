@@ -138,6 +138,14 @@ def gconnect():
     # ADD PROVIDER TO LOGIN SESSION
     login_session['provider'] = 'google'
 
+    #SEND LOGIN SESSION DATA TO Segment
+    analytics.track(login_session['user_id'],'Login', {
+        'User': login_session['username'],
+        'First Name': login_session['given_name'],
+        'Last Name' : login_session['family_name'],
+        'Email': login_session['email'],
+        'Login Provider': login_session['provider'],
+    });
     #SEND LOGIN SESSION DATA TO Mixpanel
     mp.track(login_session['email'], 'Login', {
     'User': login_session['username'],
@@ -146,6 +154,8 @@ def gconnect():
     'Email': login_session['email'],
     'Login Provider': login_session['provider'],
     })
+
+
 
 
 
@@ -187,11 +197,17 @@ def gconnect():
 
 @app.route('/gdisconnect')
 def gdisconnect():
+    #Segment Track
+    analytics.track(login_session['user_id'],'Log Out', {
+        'User': login_session['username'],
+        'Email': login_session['email'],
+    });
     #MixpanelTrack
     mp.track(login_session['email'], 'Log Out', {
     'User': login_session['username'],
     'Email': login_session['email'],
     })
+
 
     ## Only disconnect a connected user.
     access_token = login_session.get('access_token')
@@ -257,10 +273,18 @@ def showProfile(user_id):
     total_funding=session.query(func.sum(ImpactEntry.funding_amount)).filter(ImpactEntry.user_id==user_id)
 
     if request.method == 'POST':
+        #Segment Track
+        analytics.track(login_session['user_id'],'Followed Friend', {
+            'Follower': request.form['follower'],
+            'Followed': request.form['followed'],
+        });
+
+        #Mixpanel Track
         mp.track(login_session['email'], 'Followed Friend', {
         'Follower': request.form['follower'],
         'Followed': request.form['followed'],
         })
+
         newFriendship = Friendships(follower=request.form['follower'], followed=request.form['followed'])
         session.add(newFriendship)
         session.commit()
@@ -356,7 +380,18 @@ def showImpact(region_id):
     last_impact_post = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).first()
 
     if request.method == 'POST':
+        #Segment Track
+        analytics.track(login_session['user_id'],'Submit Impact Post', {
+            'Name': request.form['name'],
+            'Hours': request.form['hours'],
+            'Funding Amount': request.form['funding_amount'],
+            'Category': request.form['category'],
+            'Organisation': request.form['organisation'],
+            'Notes': request.form['notes'],
+            'Address': request.form['address'],
+        });
 
+        #Mixpanel Track
         mp.track(login_session['email'], 'Submit Impact Post', {
         'Name': request.form['name'],
         'Hours': request.form['hours'],
@@ -366,6 +401,7 @@ def showImpact(region_id):
         'Notes': request.form['notes'],
         'Address': request.form['address'],
         })
+
 
         newImpactPost = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
         funding_amount=request.form['funding_amount'],category=request.form['category'], organisation=request.form['organisation'],
