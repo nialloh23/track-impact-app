@@ -482,7 +482,7 @@ def deleteImpactEntry(region_id, impact_id):
 @app.route('/regions/dashboard')
 @app.route('/dashboard')
 def showDashboard():
-        return 'This page will show the collated impact dashboard from all regions'
+        return render_template('dashboard.html',login_session=login_session)
 
 
 @app.route('/region/<int:region_id>/dashboard')
