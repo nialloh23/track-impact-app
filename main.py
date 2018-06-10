@@ -382,6 +382,7 @@ def showImpact(region_id):
     if request.method == 'POST':
         #Segment Track
         analytics.track(login_session['user_id'],'Submit Impact Post', {
+            'Region': region.name,
             'Name': request.form['name'],
             'Hours': request.form['hours'],
             'Funding Amount': request.form['funding_amount'],
