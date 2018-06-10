@@ -306,7 +306,7 @@ def newRegion():
     if request.method == 'POST':
 
         analytics.track('Created New Region', {
-          'Region Name': 'request.form['name']',
+          'Region Name': 'Curry Test',
         });
 
         mp.track(login_session['email'], 'Create New Region', {
