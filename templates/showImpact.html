@@ -21,14 +21,6 @@
       }}();
     </script>
 
-    <script>
-        function captureData() {
-            var hours_element = document.getElementById('hours');
-            console.log(hours_element.value);
-            return {hours : hours_element.value};
-          };
-    </script>
-
   </head>
 
   <body>
@@ -116,9 +108,13 @@
           <input type='submit' value='Create'>
 
           </form>
-
-
-
+          <script type="text/javascript">
+            form = document.getElementById('new_impact_post');
+            analytics.trackForm(form, 'Submit Impact Client Side'{
+                plan: 'Premium',
+                revenue: 99.00
+              });
+          </script>
 
           <form class="callout text-center">
 
