@@ -110,19 +110,19 @@
           </form>
           <script type="text/javascript">
             var form = document.getElementById('new_impact_post');
-            var hours = document.getElementById('hours');
-            var funding_amount = document.getElementById('funding_amount');
-            var organisation = document.getElementById('organisation');
-            var address = document.getElementById('address');
-            var picture = document.getElementById('picture');
-            var user_id = document.getElementById('user_id');
+            var hours = document.getElementById('hours').value;
+            var funding_amount = document.getElementById('funding_amount').value;
+            var organisation = document.getElementById('organisation').value;
+            var address = document.getElementById('address').value;
+            var picture = document.getElementById('picture').value;
+            var user_id = document.getElementById('user_id').value;
             analytics.trackForm(form, 'Submit Impact Client Side',{
-                hours: 'hours',
-                funding_amount: 'funding_amount',
-                organisation: 'organisation',
-                address: 'address',
-                picture: 'picture',
-                user_id: 'user_id'
+                hours: hours,
+                funding_amount: funding_amount,
+                organisation: organisation,
+                address: address,
+                picture: picture,
+                user_id: user_id
               });
           </script>
 
