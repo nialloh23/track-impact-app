@@ -109,8 +109,8 @@
 
           </form>
           <script type="text/javascript">
-            form = document.getElementById('new_impact_post');
-            analytics.trackForm(form, 'Submit Impact Client Side'{
+            var form = document.getElementById('new_impact_post');
+            analytics.trackForm(form, 'Submit Impact Client Side',{
                 plan: 'Premium',
                 revenue: 99.00
               });
