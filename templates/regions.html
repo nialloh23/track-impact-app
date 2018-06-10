@@ -97,7 +97,7 @@
           <div class="container">
 
           	<!-- project isting -->
-            {% for region in regions %}
+            {% for region in regions[:12] %}
           	<div class="project">
           		<a href="{{url_for('showImpact', region_id = region.id)}}"> <span id="empty_span"></span> </a>
           		<div class="project_image">
