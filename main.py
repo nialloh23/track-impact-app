@@ -305,7 +305,7 @@ def newRegion():
         return redirect('/login')
     if request.method == 'POST':
 
-        analytics.track(login_session['email'],'Created New Region', {
+        analytics.track(login_session['user_id'],'Created New Region', {
           'Region Name': request.form['name'],
         });
 
