@@ -565,6 +565,36 @@ footer {
     width: 200px;
 }
 
-#dash_button{
-  background-color: Transparent;
+
+.hero .dash_button {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Border styles */
+    border: 2px solid #58B74E;
+    background-color: transparent;
+
 }
+
+.hero .dash_button {
+    /* Positioning and sizing */
+    display: block;
+    width: 200px;
+
+    /* Padding and margins */
+    padding: 1em;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+
+    /* Text styles */
+    color: #58B74E;
+    text-decoration: none;
+    font-size: 16px;
+
+    /* Border styles */
+    border: 3px solid #58B74E;
+    border-radius: 30px;
+  }
