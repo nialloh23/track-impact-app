@@ -141,6 +141,12 @@ def gconnect():
     # ADD PROVIDER TO LOGIN SESSION
     login_session['provider'] = 'google'
 
+    # see if user exists, if it doesn't make a new one
+    user_id = getUserID(data["email"])
+    if not user_id:
+        user_id = createUser(login_session)
+    login_session['user_id'] = user_id
+
     #SEND LOGIN SESSION DATA TO Segment
     analytics.track(login_session['user_id'],'Login', {
         'User': login_session['username'],
@@ -159,14 +165,6 @@ def gconnect():
     })
 
 
-
-
-
-    # see if user exists, if it doesn't make a new one
-    user_id = getUserID(data["email"])
-    if not user_id:
-        user_id = createUser(login_session)
-    login_session['user_id'] = user_id
 
 
     mp.people_set(login_session['email'], {
