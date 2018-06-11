@@ -36,6 +36,7 @@ class User(Base):
     employment_name= Column(String(80))
     employment_title= Column(String(80))
     employment_role= Column(String(80))
+    employment_domain= Column(String(80))
     employment_seniority= Column(String(80))
     facebook_handle= Column(String(80))
     github_handle= Column(String(80))
