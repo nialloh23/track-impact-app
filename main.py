@@ -284,7 +284,7 @@ def showProfile(user_id):
     total_funding=session.query(func.sum(ImpactEntry.funding_amount)).filter(ImpactEntry.user_id==user_id)
 
     if request.method == 'POST':
-        #Segment Track
+        ##Segment Track
         analytics.track(login_session['user_id'],'Followed Friend', {
             'Follower': request.form['follower'],
             'Followed': request.form['followed'],
