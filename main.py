@@ -421,9 +421,9 @@ def showImpact(region_id):
         return (lat,lon)
 
     if request.method == 'POST':
-        location=request.form['address']
-        latitude=getGeocodeLocation('location')[0]
-        longitude=getGeocodeLocation('location')[1]
+        input_location=request.form['address']
+        latitude=getGeocodeLocation('input_location')[0]
+        longitude=getGeocodeLocation('input_location')[1]
 
 
 
