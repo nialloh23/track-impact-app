@@ -58,7 +58,7 @@
       <div class="text-center">
         <h3 id=profile_name>{{region.name}}</h3>
         {% if region.user_id == login_session['user_id'] %}
-        <p><a href = "{{url_for('showRegionDashboard', region_id = region.id )}}">(Visit Impact Dashboard)</a></p>
+        <p><a href = "{{url_for('showDashboard', region_id = region.id )}}">(View Impact Dashboard)</a></p>
         <span><a href = "{{url_for('editRegion',region_id = region.id)}}">Edit Region</a></span>
         <span><a href = "{{url_for('deleteRegion',region_id = region.id)}}">Delete Region</a> </span>
         {% else %}

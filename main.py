@@ -8,7 +8,10 @@ from sqlalchemy import desc
 from sqlalchemy import func
 from mixpanel import Mixpanel
 import analytics
+import clearbit
+import json
 
+clearbit.key = 'sk_c116bb2548cbf0cf36ab39503cc5cf5e'
 analytics.write_key = 'N0e9ZzG3TwjnuCi76InqHP6Hizg2Mclg'
 mp = Mixpanel('39c50c9ebffb3bd56f5375475546b405')
 
@@ -241,6 +244,8 @@ def gdisconnect():
 
 
 def createUser(login_session):
+    clear_email = login_session['email']
+    lookup = clearbit.Enrichment.find(email=email, stream=True)
     newUser = User(name=login_session['username'], email=login_session[
                    'email'], picture=login_session['picture'])
     session.add(newUser)
