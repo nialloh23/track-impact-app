@@ -250,7 +250,7 @@ def createUser(login_session):
                     picture=login_session['picture'],
                     location=lookup['person']['location'],
                     bio=lookup['person']['bio'],
-                    familyName = lookup['person']['familyName'],
+                    familyName = lookup['person']['name']['familyName'],
                     )
     session.add(newUser)
     session.commit()
