@@ -246,8 +246,14 @@ def gdisconnect():
 def createUser(login_session):
     clear_email = login_session['email']
     lookup = clearbit.Enrichment.find(email=email, stream=True)
-    newUser = User(name=login_session['username'], email=login_session[
-                   'email'], picture=login_session['picture'])
+
+    newUser = User(name=login_session['username'],
+                    email=login_session['email'],
+                    picture=login_session['picture'],
+                    location=lookup['person']['location'],
+                    bio=lookup['person']['bio'],
+                    familyName = lookup['person']['familyName'],
+                    )
     session.add(newUser)
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()

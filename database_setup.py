@@ -23,6 +23,8 @@ class User(Base):
     facebook_profile = Column(String(80))
     twitter_profile = Column(String(80))
     linkedin_profile = Column(String(80))
+    bio = Column(String(250))
+    familyName = Column(String(80))
 
 class Regions(Base):
     __tablename__ = 'regions'
