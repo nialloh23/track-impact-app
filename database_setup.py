@@ -82,6 +82,8 @@ class ImpactEntry(Base):
     region = relationship(Regions)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
+    latitude = Column(Float)
+    longitude = Column(Float)
 
     @property
     def serialize(self):

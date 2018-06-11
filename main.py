@@ -7,6 +7,7 @@ from database_setup import Regions, Base, ImpactEntry, User, Friendships
 from sqlalchemy import desc
 from sqlalchemy import func
 from mixpanel import Mixpanel
+import httplib2
 import analytics
 import clearbit
 import json
@@ -408,7 +409,23 @@ def showImpact(region_id):
     impact_enteries = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).all()
     last_impact_post = session.query(ImpactEntry).filter_by(region_id=region_id).order_by(desc(ImpactEntry.id)).first()
 
+
     if request.method == 'POST':
+        location=request.form['address']
+        latitude=getGeocodeLocation('location')[0]
+        longitude=getGeocodeLocation('location')[1]
+
+        def getGeocodeLocation(inputString):
+            google_api_key="AIzaSyAz0m-9jsGJ5u2it9wYrfxL55VFxs3t_MA"
+            locationString= inputString.replace(" ", "+")
+            url=('https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s'%(
+            locationString, google_api_key))
+            h=httplib2.Http()
+            result = json.loads(h.request(url, 'GET')[1])
+            latitude=result['results'][0]['geometry']['location']['lat']
+            longitude=result['results'][0]['geometry']['location']['lng']
+            return (latitude,longitude)
+
         #Segment Track
         analytics.track(login_session['user_id'],'Submit Impact Post', {
             'Region': region.name,
@@ -435,7 +452,8 @@ def showImpact(region_id):
 
         newImpactPost = ImpactEntry(name=request.form['name'], hours=request.form['hours'],
         funding_amount=request.form['funding_amount'],category=request.form['category'], organisation=request.form['organisation'],
-        notes=request.form['notes'], picture=request.form['picture'], address=request.form['address'], region_id=region_id, user_id=request.form['user_id'])
+        notes=request.form['notes'], picture=request.form['picture'], address=request.form['address'], region_id=region_id,
+        user_id=request.form['user_id'], latitude=latitude, longitude=longitude)
         session.add(newImpactPost)
         session.commit()
         return redirect(url_for('showImpact', region_id=region_id))
