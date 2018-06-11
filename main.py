@@ -243,7 +243,7 @@ def gdisconnect():
 
 def createUser(login_session):
     clear_email = login_session['email']
-    lookup = clearbit.Enrichment.find(email=email, stream=True)
+    lookup = clearbit.Enrichment.find(email=clear_email, stream=True)
 
     newUser = User(name=login_session['username'],
                     email=login_session['email'],
