@@ -11,6 +11,7 @@ import httplib2
 import analytics
 import clearbit
 import json
+import logging
 
 clearbit.key = 'sk_c116bb2548cbf0cf36ab39503cc5cf5e'
 analytics.write_key = 'N0e9ZzG3TwjnuCi76InqHP6Hizg2Mclg'
@@ -30,6 +31,9 @@ import os
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key'
+if 'DYNO' in os.environ:
+    app.logger.addHandler(logging.StreamHandler(sys.stdout))
+    app.logger.setLevel(logging.ERROR)
 
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
