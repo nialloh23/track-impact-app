@@ -416,8 +416,9 @@ def showImpact(region_id):
         locationString, google_api_key))
         h=httplib2.Http()
         result = json.loads(h.request(url, 'GET')[1])
-        latitude=result[0]['geometry']['location']['lat']
-        longitude=result[0]['geometry']['location']['lng']
+        app.logger.info('%s GeoCode Result Response is', result)
+        latitude=result['results'][0]['geometry']['location']['lat']
+        longitude=result['results'][0]['geometry']['location']['lng']
         return (latitude,longitude)
 
     if request.method == 'POST':
