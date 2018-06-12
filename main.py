@@ -419,11 +419,12 @@ def showImpact(region_id):
         lat=result['results'][0]['geometry']['location']['lat']
         lon=result['results'][0]['geometry']['location']['lng']
         return (lat,lon)
+        lat,lon=getGeocodeLocation()
 
     if request.method == 'POST':
         input_location=request.form['address']
-        latitude=getGeocodeLocation('input_location')[0]
-        longitude=getGeocodeLocation('input_location')[1]
+        latitude=getGeocodeLocation('input_location').lat
+        longitude=getGeocodeLocation('input_location').lon
 
 
 
